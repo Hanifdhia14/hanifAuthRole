@@ -1,73 +1,147 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="en">
+ <head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+   <link rel="stylesheet" href="/public/logo_asdp.png">
+   <script type="text/javascript" src="../jQuery.js"></script>
+   <script type="text/javascript" src="script.js">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+   </script>
+     <title>E-AKIO </title>
+ </head>
+<style media="screen">
+ body{
+   background-color: blue;
+   margin-top:50pt;
+   padding-top:10px;
+   padding-right:10px;
+   padding-bottom:10px;
+   padding-left:10px;
+}
+ div.container{
+ margin: auto;
+ color: blue;
+}
+ form{
+ margin-left:100pt;
+ margin-right:100pt;
+}
+ h4{
+   font-size:20px;
+   margin: 10pt;
+}
+ h2{
+   font-style: ;
+   font-size: 20px;
+   margin: 10pt;
+}
+ img{
+   padding-bottom:10pt;
+   margin: 20pt;
+}
+ input{
+ margin: 10pt;
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+}
+ p{
+   margin: 150pt;
+ }
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+ div.btn-group{
+   padding-left: 30pt;
+   margin-left: 100pt;
+   margin-bottom: 30pt;
+   }
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+label{
+ margin-left: 10 pt;
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+}
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+</style>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+<body class="form">
+ <div class="container" >
+   <div class="row justify-content-center">
+     <div class="col-lg-8">
+       <div class="from-content">
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+         <div class="card text-center shadow-lg p-3 mb-5 bg-white rounded" >
+           <img src="logo_asdp.PNG" class="rounded mx-auto d-block" width="600" height="200">
+           <h4 class="text-center"> Aplikasi Manajemen Kinerja Individu Organisasi </h4>
+             <h2 class="text-center font-italic"> Log In to <strong>AKIO</strong></h2>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+             <form method="POST" action="{{ route('login') }}">
+                 @csrf
+           <div class="input-group flex-nowrap">
+             <div class="input-group-prepend "></div>
+               <input type="text" class="form-control" placeholder="Email" name="email" aria-label="Email" aria-describedby="addon-wrapping" required autocomplete="email" autofocus>
+               @error('email')
+                   <span class="invalid-feedback" role="alert">
+                       <strong>{{ $message }}</strong>
+                   </span>
+               @enderror
+           </div>
+
+           <div class="input-group flex-nowrap">
+             <div class="input-group-prepend"></div>
+               <input type="password" class="form-control" name="password" value="" id="myinput" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping" required autocomplete="current-password">
+               @error('password')
+                   <span class="invalid-feedback" role="alert">
+                       <strong>{{ $message }}</strong>
+                   </span>
+               @enderror
+           </div>
+
+             <div class="form-group form-check">
+               <div style="margin-right: 240px;margin-top: 20px;">
+                 <input type="checkbox" class="form-check-input" id="exampleCheck1" onclick="myFunction()">
+                 <label class="form-check-label" for="exampleCheck1">lihat Password</label>
+               </div>
+             </div>
+
+             <div class="input-group flex-nowrap" accesskey="">
+               <div class="btn-group">
+                   <div>
+                     <button type="submit" class="btn btn-primary" value="" href="{{url('/main')}}" >Log In</button>
+                   </div>
+               </div>
+             </div>
+           </form>
+
+           <div class="center">
+             <small>© 2020 ALL Rights Reserved</small> <br>
+             <small>AKIO is a product of Earth Life.Id</small>
+           </div>
+
+         </div>
+       </div>
+     </div>
+     </div>
+   </div>
+ </div>
+   <!-- Optional JavaScript; choose one of the two! -->
+   <script>
+   function myFunction() {
+     var x = document.getElementById("myinput");
+     if (x.type === "password") {
+       x.type = "text";
+     } else {
+       x.type = "password";
+     }
+   }
+   </script>
+   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
