@@ -23,7 +23,7 @@
    padding-bottom:10px;
    padding-left:10px;
 }
- div.container{
+ .container{
  margin: auto;
  color: blue;
 }
@@ -70,7 +70,7 @@ label{
 <body class="form">
  <div class="container" >
    <div class="row justify-content-center">
-     <div class="col-lg-8">
+     <div class="box-cell">
        <div class="from-content">
 
          <div class="card text-center shadow-lg p-3 mb-5 bg-white rounded" >

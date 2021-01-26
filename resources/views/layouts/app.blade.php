@@ -7,8 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <title>AKIO</title>
+  <link rel="shortcut icon" href="http://156.67.218.233/superior/assets/images/logobaru2.jpg">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -24,12 +24,14 @@
         rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 
 </head>
 <body>
     <div id="app">
         <main class="py-1">
+
           <div id="wrapper">
 
               <!-- Left side column. contains the logo and sidebar -->
@@ -66,16 +68,17 @@
     <!-- Page level custom scripts -->
     <script src="sbadmin2/js/demo/chart-area-demo.js"></script>
     <script src="sbadmin2/js/demo/chart-pie-demo.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js
+"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js">
+
+</script>
 
     <script type="text/javascript">
     $(document).ready(function() {
-    $('#example').DataTable( {
-        "kuadran": "data/arrays.txt"
-        } );
-      } );
-
+      $('#example').DataTable();
+  });
     </script>
     <script src="/datepicker/js/" charset="utf-8"></script>
 
