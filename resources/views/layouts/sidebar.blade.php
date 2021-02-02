@@ -217,20 +217,6 @@
             </div>
         </li>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="{{ route('logout')}}" onclick="event.preventDefault();
@@ -245,10 +231,6 @@
         <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
-
-  <div class="d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle" ></button>
-  </div>
 
 
     </ul>

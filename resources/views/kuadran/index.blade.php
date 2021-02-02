@@ -4,13 +4,7 @@
   @section('content')
 
   <style media="screen">
-    div.card{
-      height: 45rem;
 
-    }
-.card-header{
-      height: 50rem
-    }
     h1{
       color: darkblue;
       margin-left: 20pt;
@@ -22,7 +16,10 @@
       margin-left: 50pt;
 
     }
+table{
+  padding-top: 20px;
 
+}
   </style>
 
 
@@ -31,8 +28,8 @@
     <!-- Content Header (Page header) -->
         <h1>Master Kuadran <small> Imput Nama Kuadran</small> </h1>
         <hr class="sidebar-divider">
-    <div class="card">
-      <div class="card-header">
+
+    <div class="card-header">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Tambah</button>
         <!-- Search form -->
         @if (session('status'))
@@ -148,60 +145,46 @@
   <!-- End Content edit modal -->
 
         <!-- Content table data -->
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Kode Kuadran</th>
+              <th>Kuadran</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
 
-                      <table id="example" class="display" style="width:100%">
-                        <thead>
-                          <tr>
-                            <th>No</th>
-                            <th>Kode Kuadran</th>
-                            <th>Kuadran</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Aksi</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                        @foreach ($kuadran as $kdr)
-                          <tr>
-                            <td >{{$loop-> iteration}}</th>
-                            <td >{{$kdr ->kode_kuadran}}</td>
-                            <td >{{$kdr ->kuadran}}</td>
-                            <td >{{$kdr ->start_date}}</td>
-                            <td >{{$kdr ->end_date}}</td>
-                            <td >
-                                  <a class="btn btn-primary" data-toggle="modal" data-target="#edit-{{$kdr->kode_kuadran}}">edit</a>
-                                  <a href="kuadran.index.destroy{{$kdr->kode_kuadran}}" class="btn btn-danger" class="text-center" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">delete</a>
-                            </td>
-                          </tr>
-                        @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Kode Kuadran</th>
-                                <th>Kuadran</th>
-                                <th>Start date</th>
-                                <th>End date</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
-                      </table>
-
-
-      </div>
-
+          <tbody>
+            @foreach ($kuadran as $kdr)
+            <tr>
+              <td>{{$loop-> iteration}}</th>
+              <td>{{$kdr ->kode_kuadran}}</td>
+              <td>{{$kdr ->kuadran}}</td>
+              <td>{{$kdr ->start_date}}</td>
+              <td>{{$kdr ->end_date}}</td>
+              <td>
+                <a class="btn btn-primary" data-toggle="modal" data-target="#edit-{{$kdr->kode_kuadran}}">edit</a>
+                <a href="kuadran.index.destroy{{$kdr->kode_kuadran}}" class="btn btn-danger" class="text-center" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">delete</a>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>No</th>
+              <th>Kode Kuadran</th>
+              <th>Kuadran</th>
+              <th>Start date</th>
+              <th>End date</th>
+              <th>Aksi</th>
+            </tr>
+          </tfoot>
+        </table>
     </div>
 
   </div>
-
-  <script type="text/javascript">
-  $(document).ready(function() {
-    $('#example').DataTable();
-  });
-
-  </script>
-
-
 
 @endsection

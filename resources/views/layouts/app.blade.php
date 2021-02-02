@@ -14,45 +14,52 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="sbadmin2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+
 
 </head>
-<body>
-    <div id="app">
-        <main class="py-1">
+<body id="page-top">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
-          <div id="wrapper">
+    <!-- Sidebar -->
+    @include('layouts.sidebar')
+    <!-- End of Sidebar -->
 
-              <!-- Left side column. contains the logo and sidebar -->
-            @include('layouts.sidebar')
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      @include('layouts.header')
+      <!-- Main Content -->
+      <div class="container-fluid">
+          <!-- Content Wrapper. Contains page content -->
+          @yield('content')
 
-
-                  <div class="container-fluid">
-                      <!-- Content Wrapper. Contains page content -->
-                      @yield('content')
-
-                      <div class="footer">
-                          @include('layouts.footer')
-                      </div>
-
-                  </div>
-
+          <div class="container-fluid">
+            @include('layouts.footer')
           </div>
 
-        </main>
-
+      </div>
     </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Core plugin JavaScript-->
     <script src="sbadmin2/vendor/jquery/jquery.min.js"></script>
     <script src="sbadmin2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -65,23 +72,21 @@
     <!-- Page level plugins -->
     <script src="sbadmin2/vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level custom scripts -->
+    <!-- Page DataTable -->
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+      <script type="text/javascript">
+      $(document).ready(function() {
+    $('#example').DataTable();
+} );
+      </script>
+
+    <!-- Datepicker custom scripts -->
     <script src="sbadmin2/js/demo/chart-area-demo.js"></script>
     <script src="sbadmin2/js/demo/chart-pie-demo.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.js
-"></script>
-<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js">
-
-</script>
-
-    <script type="text/javascript">
-    $(document).ready(function() {
-      $('#example').DataTable();
-  });
-    </script>
     <script src="/datepicker/js/" charset="utf-8"></script>
-
     <script>
     $(function() {
     $( "#kuadran","#kpi","#tgl_q1", "#tgl_q2", "#tgl_q3","#tgl_q4","#tgl_target_semester1", "#tgl_target_semester2","#tgl_target_tahun_unit" ).datepicker({
@@ -89,6 +94,8 @@
     });
     });
     </script>
+
+
 
 </body>
 </html>
