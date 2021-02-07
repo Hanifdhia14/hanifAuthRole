@@ -9,8 +9,7 @@
 
     <title>AKIO</title>
   <link rel="shortcut icon" href="http://156.67.218.233/superior/assets/images/logobaru2.jpg">
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -50,7 +49,6 @@
       </div>
     </div>
     <!-- End of Content Wrapper -->
-
   </div>
   <!-- End of Page Wrapper -->
 

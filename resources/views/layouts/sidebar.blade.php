@@ -1,6 +1,7 @@
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
+  <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -155,7 +156,6 @@
 
                     <h6>Monitoring Screens:</h6>
                     <li><a href="{{url('user.repotuser.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
-                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i>#</a></li>
 
                   </ul>
                 </div>
@@ -182,9 +182,9 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <ul class="treeview-menu">
                         <h6 >Custom Utilities:</h6>
-                      <li><a href="#" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
-                      <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
-                      <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> Approve Set Kerja</a></li>
+                      <li><a href="{{url('leader.target_kerjaleader.index')}}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
+                      <li><a href="{{url('leader.nilai_targetleader.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
+                      <li><a href="{{url('leader.approv.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Approve Set Kerja</a></li>
                     </ul>
                 </div>
             </div>
@@ -234,6 +234,7 @@
 
 
     </ul>
+  </div>
     <!-- End of Sidebar -->
   </section>
   <!-- /.sidebar -->
