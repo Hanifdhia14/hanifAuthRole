@@ -1,6 +1,3 @@
-
-
-
 <header class="main-header">
   <style media="screen">
     nav{
@@ -8,19 +5,12 @@
       display: flex;
       justify-content: space-between;
     }
-#log{
-  background-image: url('resources/css/img/logo.png');
-}
-
 
   </style>
   <!-- Topbar Navbar -->
   <nav class="navbar navbar-expand navbar-dark bg-dark topbar mb-4 static-top shadow">
 
-<div class="">
-  <a class="navbar-brand mr-1" href="">ASDP Indonesia</a>
-
-
+<div class="nav">
   <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
     <i class="fas fa-bars"></i>
   </button>

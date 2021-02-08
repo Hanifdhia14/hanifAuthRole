@@ -71,7 +71,6 @@ padding-top: 20px;
                     <button type="submit" class="btn btn-primary">Buat</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
                   </div>
-
                 </form>
               </div>
             </div>
@@ -140,8 +139,8 @@ padding-top: 20px;
                   <td>{{$dc->kode_dcm}}</td>
                   <td>{{$dc->document}}</td>
                     <td>
-                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#editModal-{{$dc->kode_dcm}}" data-whatever="@getbootstrap">Edit</a>
-                        <a href="document.index.destroy{{$dc->kode_dcm}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')" > Delete </a>
+                        <a data-toggle="modal" data-target="#editModal-{{$dc->kode_dcm}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
+                        <a href="document.index.destroy{{$dc->kode_dcm}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')" ><i class="material-icons">&#xE872;</i></a>
                     </td>
                 </tr>
               @endforeach

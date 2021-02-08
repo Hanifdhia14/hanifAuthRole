@@ -26,7 +26,7 @@ table{
   <div class="content-wrapper">
 
     <!-- Content Header (Page header) -->
-        <h1>Master Kuadran <small> Imput Nama Kuadran</small> </h1>
+        <h1> Kuadran <small> Imput Kuadran</small> </h1>
         <hr class="sidebar-divider">
 
     <div class="card-header">
@@ -166,9 +166,10 @@ table{
               <td>{{$kdr ->start_date}}</td>
               <td>{{$kdr ->end_date}}</td>
               <td>
-                <a class="btn btn-primary" data-toggle="modal" data-target="#edit-{{$kdr->kode_kuadran}}">edit</a>
-                <a href="kuadran.index.destroy{{$kdr->kode_kuadran}}" class="btn btn-danger" class="text-center" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">delete</a>
+                <a aria-hidden="true" data-toggle="modal" data-target="#edit-{{$kdr->kode_kuadran}}"> <i class="material-icons">&#xE254;</i> </a>
+                <a href="kuadran.index.destroy{{$kdr->kode_kuadran}}" aria-hidden="true" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
               </td>
+
             </tr>
             @endforeach
           </tbody>

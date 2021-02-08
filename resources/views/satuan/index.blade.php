@@ -137,8 +137,8 @@
         <td >{{$stn->kode_satuan}}</td>
         <td >{{$stn->satuan}}</td>
         <td >
-            <a href="" class="btn btn-primary"data-toggle="modal" data-target="#editModal-{{$stn->kode_satuan}}" data-whatever="@getbootstrap">Edit</a>
-            <a href="satuan.index.destroy{{$stn->kode_satuan}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Delete</a>
+            <a data-toggle="modal" data-target="#editModal-{{$stn->kode_satuan}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
+            <a href="satuan.index.destroy{{$stn->kode_satuan}}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="material-icons">&#xE872;</i></a>
         </td>
         </tr>
         @endforeach

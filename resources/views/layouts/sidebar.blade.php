@@ -1,32 +1,65 @@
+
+<style media="screen">
+
+</style>
+
+
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
-  <section class="sidebar">
+  <section class="sidebar" style="height: auto">
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3"> Admin <sup>2</sup></div>
+          <div class="pull-left image">
+            <img src="logo.PNG" width="100">
+          </div>
         </a>
-
         <!-- Divider -->
-        <hr class="sidebar-divider my-0">
 
-        <!-- Nav Item - Dashboard -->
+        <hr class="sidebar-divider my-3">
+<div class="text-center">
+  <div class="user-pic">
+   <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+     alt="User picture" width="50">
+  </div>
+  <div class="user-info">
+   <span class="user-name" style="color: white; font-family: Verdana; font-weight: bold">{{auth()->user()->name}}</span><br>
+  </div>
+</div>
+
+  <hr class="sidebar-divider my-0">
+<!-- Nav Item - Dashboard -->
+    @if(auth()->user()->role=="admin")
         <li class="nav-item active">
             <a class="nav-link" href="{{url('/home')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
+    @endif
+      @if(auth()->user()->role=="user")
+        <li class="nav-item active">
+            <a class="nav-link" href="{{url('/home1')}}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+    @endif
+      @if(auth()->user()->role=="leader")
+        <li class="nav-item active">
+            <a class="nav-link" href="{{url('/home2')}}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+      @endif
 
         <!-- Divider -->
-        <hr class="sidebar-divider">
+
 
         <!-- Heading -->
+        @if(auth()->user()->role=="admin")
+        <hr class="sidebar-divider">
         <div class="sidebar-heading">
             Admin Interface
         </div>
@@ -99,18 +132,9 @@
                 </div>
             </div>
         </li>
+        @endif
 
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
-        </li>
-
-
-
-
-
+      @if(auth()->user()->role=="user")
         <hr class="sidebar-divider">
 
         <!-- Heading -->
@@ -161,9 +185,9 @@
                 </div>
             </div>
         </li>
+        @endif
 
-
-
+      @if(auth()->user()->role=="leader")
         <hr class="sidebar-divider">
 
         <!-- Heading -->
@@ -216,6 +240,7 @@
                 </div>
             </div>
         </li>
+        @endif
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">

@@ -257,8 +257,8 @@
                   <td >{{$empl->email}}</td>
                   <td >{{$empl->no_tlp}}</td>
                   <td >
-                      <a class="btn btn-primary"data-toggle="modal" data-target="#editmodal{{$empl->nik}}" data-whatever="@getbootstrap">Edit</a>
-                      <a href="employee.index.destroy{{$empl->nik }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">Delete</a>
+                      <a data-toggle="modal" data-target="#editmodal{{$empl->nik}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
+                      <a href="employee.index.destroy{{$empl->nik }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
                   </td>
                 </tr>
               @endforeach

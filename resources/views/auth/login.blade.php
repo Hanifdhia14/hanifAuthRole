@@ -17,6 +17,9 @@
 body{
   background-color: blue;
 }
+	.container-fluid{
+	margin-top: 60px;
+}
   .main-content{
   width: 50%;
   border-radius: 20px;
@@ -51,7 +54,15 @@ body{
   }
   .row > h2{
   color:darkblue;
+	margin-top: 10px;
+	font-family: Verdana;
+	font-weight: bold;
   }
+.row > h4{
+	margin-top: 30px;
+	font-family:sans-serif;
+	font-weight: lighter;
+}
   .login_form{
   background-color: #fff;
   border-top-right-radius:20px;
@@ -93,6 +104,10 @@ body{
   background-color: #008080;
   color:#fff;
   }
+.footer{
+	margin-top: 0px;
+	font-size: 2rem;
+}
   </style>
 	<!-- Main Content -->
 	<div class="container-fluid">
@@ -104,7 +119,7 @@ body{
 			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
 				<div class="container-fluid">
 					<div class="row">
-						<h2>Log In TO AKIO</h2>
+						<h2>Log In To AKIO</h2>
             <h4 class="text-center" style=" color: darkblue"> Aplikasi Manajemen Kinerja Individu Organisasi </h4>
 					</div>
 

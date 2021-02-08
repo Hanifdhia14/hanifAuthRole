@@ -145,8 +145,8 @@
         <td >{{$tp->kode_nilai}}</td>
         <td >{{$tp->tipe_penilaian}}</td>
         <td >
-            <a href="" class="btn btn-primary"data-toggle="modal" data-target="#editModal-{{$tp->kode_nilai}}" data-whatever="@getbootstrap">Edit</a>
-            <a href="tipe_penilaian.index.destroy{{$tp->kode_nilai }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">Delete</a>
+            <a data-toggle="modal" data-target="#editModal-{{$tp->kode_nilai}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
+            <a href="tipe_penilaian.index.destroy{{$tp->kode_nilai }}"onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
         </td>
       </tr>
       @endforeach

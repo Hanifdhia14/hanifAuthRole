@@ -212,8 +212,8 @@ table{
           <td>{{$kp ->start_date}}</td>
           <td>{{$kp ->end_date}}</td>
           <td >
-              <a class="btn btn-primary"data-toggle="modal" data-target="#edit{{$kp->kode_kpi}}" data-whatever="@getbootstrap">Edit</a>
-              <a href="kpi.index.destroy{{$kp->kode_kpi }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">Delete</a>
+              <a data-toggle="modal" data-target="#edit{{$kp->kode_kpi}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
+              <a href="kpi.index.destroy{{$kp->kode_kpi }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
           </td>
         </tr>
       @endforeach

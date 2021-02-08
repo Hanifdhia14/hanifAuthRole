@@ -30,6 +30,16 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function index1()
+    {
+        return view('home1');
+    }
+    public function index2()
+    {
+        return view('home2');
+    }
+
     public function testAdmin()
     {
         return "Page Admin Only!";

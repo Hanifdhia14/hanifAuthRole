@@ -132,8 +132,8 @@
         <td>{{$nmax->kode_nmax}}</td>
         <td >{{$nmax->nilai_maksimal}}</td>
         <td >
-            <a href="" class="btn btn-primary"data-toggle="modal" data-target="#editModal-{{$nmax->kode_nmax}}" data-whatever="@getbootstrap">Edit</a>
-            <a href="nilai_maksimal.index.destroy{{$nmax->kode_nmax}}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">Delete</a>
+            <a data-toggle="modal" data-target="#editModal-{{$nmax->kode_nmax}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
+            <a href="nilai_maksimal.index.destroy{{$nmax->kode_nmax}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
         </td>
       </tr>
       @endforeach
