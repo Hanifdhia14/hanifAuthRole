@@ -6,7 +6,7 @@
 
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
-  <section class="sidebar" style="height: auto">
+
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -24,7 +24,7 @@
   <div class="user-pic">
    <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
      alt="User picture" width="50">
-  </div>
+  </div><br>
   <div class="user-info">
    <span class="user-name" style="color: white; font-family: Verdana; font-weight: bold">{{auth()->user()->name}}</span><br>
   </div>
@@ -233,9 +233,8 @@
                   <ul class="treeview-menu">
 
                     <h6>Monitoring Screens:</h6>
-                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
-                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i>#</a></li>
-
+                    <li><a href="{{url('leader.repotleader.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
+                    <li><a href="{{url('leader.nilai_staff.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Staff </a></li>
                   </ul>
                 </div>
             </div>
@@ -244,11 +243,10 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout')}}" onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
+            <a class="nav-link" href="{{ route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt "></i>
                 <span>Log Out</span></a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none" >
                     @csrf
                 </form>
         </li>
@@ -261,6 +259,6 @@
     </ul>
   </div>
     <!-- End of Sidebar -->
-  </section>
+
   <!-- /.sidebar -->
 </aside>

@@ -9,10 +9,11 @@
     margin-left: 20pt;
     font-style: article;
   }
-  button{
+  .btn{
     margin-top:10pt;
     margin-bottom: 20pt;
-    margin-left: 50pt;
+    margin-left: 10pt;
+    float:right;
 
   }
 table{

@@ -11,9 +11,13 @@ class RepotleaderController extends Controller
         return view('leader.repotleader.index');
     }
 
+
+
+
     public function store(Request $request)
     {
     }
+
     public function edit(Request $request)
     {
     }

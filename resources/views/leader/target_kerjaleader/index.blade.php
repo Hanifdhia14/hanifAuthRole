@@ -18,8 +18,8 @@
 
     </style>
 
-  <div ="container-fluid">
-    <div class="content-wrapper">
+<div id="content-wrapper">
+  <div class="container-fluid">
       <!-- Content Header (Page header) -->
           <h1>Input Target Kerja</h1>
             <hr class="sidebar-divider">
@@ -577,6 +577,7 @@
 
     </div>
   </div>
+</div>
   <script type="text/javascript">
   $(document).ready(function() {
   $('#example').DataTable( {

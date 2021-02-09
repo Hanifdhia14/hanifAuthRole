@@ -87,7 +87,7 @@ class Target_kerjaController extends Controller
         if ($request->isMethod('POST')) {
             $set = $request->all();
         }
-        Target_kerja::where('id_set_target', $request->id_set_target)
+        Target_kerja::where('id_kerja', $request->id_kerja)
       ->update([
        'kode_kuadran' => $request-> kode_kuadran,
        'kode_kpi' => $request-> kode_kpi,
@@ -128,9 +128,9 @@ class Target_kerjaController extends Controller
     }
 
 
-    public function destroy($id_set_target)
+    public function destroy($id_kerja)
     {
-        DB::table('set_target_user')->where('id_set_target', $id_set_target)->delete();
+        DB::table('set_target_user')->where('id_kerja', $id_kerja)->delete();
         return redirect('user.target_kerja.index')-> with('status', 'Data Setting Traget Telah Berhasil Dihapuskan!');
 
         // alihkan halaman ke halaman kuadran

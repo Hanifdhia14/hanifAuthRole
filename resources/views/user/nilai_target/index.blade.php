@@ -98,10 +98,9 @@ padding-top: 20px;
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td >
-                        <a class="btn btn-success" data-toggle="modal" data-target="#edit-">Input</a>
-                        <a class="btn btn-warning" data-toggle="modal" data-target="#edit-">Edit</a>
-
+                  <td>
+                      <a class="btn btn-warning" data-toggle="modal" data-target="#edit-">Edit</a>
+                      <a class="btn btn-success" data-toggle="modal" data-target="#edit-">Input</a>
                   </td>
               </tr>
           </tbody>

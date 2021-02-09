@@ -5,8 +5,7 @@
 
     <style media="screen">
 
-  h1{
-          color: darkblue;
+  h1{     color: darkblue;
           margin-left: 20pt;
           font-style: article;
         }
@@ -322,7 +321,6 @@
     <form method="post" action="{{action([\App\Http\Controllers\Target_kerjaController::class,'edit'])}}" id="editform">
   {{csrf_field()}}
       <div class="modal-body">
-      <div class="modal-body">
           <label for="kode_kuadran" class="col-form-label">Kuadran:</label>
           <select type="text"  name="kode_kuadran" id="kode_kuadran" class="form-control">
             <option value=""> {{$set->kode_kuadran}}</option>
@@ -375,7 +373,7 @@
 
     <div class="modal-body">
       <label for="kode_nilai" class="col-form-label">Tipe Penilaian</label>
-      <select  name="kode_nilai" id="editperiode_nilai" class="form-control" onchange="editshowperiode_nilai">
+      <select  name="kode_nilai" id="edit_nilai" class="form-control" onchange="showperiode_nilai">
                  <option value="">{{$set->kode_nilai}}</option>
                  <option value="Bulanan">Bulanan</option>
                  <option value="Quarter">Quarter</option>
@@ -572,10 +570,10 @@
                         <td>{{$set ->kode_nilai}}</td>
                         <td>{{$set ->target_absolut}}</td>
                         <td>{{$set ->bobot}}</td>
-                        <td><!--<span class="btn {{($set->status == 0) ? 'btn-success' :'btn-danger' }}">{{($set->status == 0) ? 'Publish':'Pending'}}</span></td>-->
+                        <td> <!--<span class="btn {{($set->status == 0) ? 'btn-success' :'btn-danger' }}">{{($set->status == 0) ? 'Publish':'Pending'}}</span>--></td>
                         <td>
-                              <a class="btn btn-primary" data-toggle="modal" data-target="#edit-{{$set->id_target}}">edit</a>
-                              <a href="user.target_kerja.index.destroy{{$set->id_target}}" class="btn btn-danger" class="text-center" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">delete</a>
+                              <a data-toggle="modal" data-target="#edit-{{$set->id_target}}"><i class="material-icons">&#xE254;</i></a>
+                              <a href="user.target_kerja.index.destroy{{$set->id_kerja}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -645,6 +643,7 @@
     }
 
   }
+
   </script>
 
 

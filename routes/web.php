@@ -80,7 +80,7 @@ Route::group(['middleware' => ['auth','cekrole:user']], function () {//user Inte
     Route::get('user.target_kerja.index', [\App\Http\Controllers\Target_kerjaController::class,'index']);
     Route::POST('user.target_kerja.index', [\App\Http\Controllers\Target_kerjaController::class,'store']);
     Route::match(['get', 'POST'], 'user.target_kerja.index.edit', [\App\Http\Controllers\Target_kerjaController::class,'edit']);
-    Route::get('user.target_kerja.index.destroy{id_set_target}', [\App\Http\Controllers\Target_kerjaController::class,'destroy']);
+    Route::get('user.target_kerja.index.destroy{id_kerja}', [\App\Http\Controllers\Target_kerjaController::class,'destroy']);
 
     //Nilai Target
     Route::get('user.nilai_target.index', [\App\Http\Controllers\Nilai_targetController::class,'index']);
@@ -103,9 +103,16 @@ Route::group(['middleware' => ['auth','cekrole:leader']], function () {//user In
     //Nilai Target
     Route::get('leader.nilai_targetleader.index', [\App\Http\Controllers\Nilai_targetleaderController::class,'index']);
 
-    //Report leader
-    Route::get('leader.repotleader.index', [\App\Http\Controllers\repotleader\RepotleaderController::class,'index']);
-
     //Approval leader
     Route::get('leader.approv.index', [\App\Http\Controllers\ApprovController::class,'index']);
+
+    //Report leader
+    Route::get('leader.repotleader.index', function () {
+        return view('leader.repotleader.index');
+    });
+
+    //nilai Staff
+    Route::get('leader.nilai_staff.index', function () {
+        return view('leader.nilai_staff.index');
+    });
 });

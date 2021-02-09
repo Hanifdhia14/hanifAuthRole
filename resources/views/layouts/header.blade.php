@@ -21,7 +21,7 @@
     <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
       <li class="nav-item dropdown no-arrow show">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        DHIA EARTHA HANIF
+        {{auth()->user()->name}}
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
 
