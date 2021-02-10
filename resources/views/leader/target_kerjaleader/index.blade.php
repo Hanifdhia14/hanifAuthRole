@@ -546,8 +546,8 @@
                         <td></td>
                         <td></td>
                         <td >
-                              <a class="btn btn-primary" data-toggle="modal" data-target="#edit">edit</a>
-                              <a href="" class="btn btn-danger" class="text-center" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">delete</a>
+                          <a data-toggle="modal" data-target="#edit-"><i class="material-icons">&#xE254;</i></a>
+                          <a href=onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>
 
@@ -621,46 +621,5 @@
 
   }
   </script>
-
-
-  <script>
-  $(document).ready(function() {
-
-    $('#show_heading').hide();
-    $('#show_heading2').hide();
-    $('#show_heading3').hide();
-    $('#show_heading4').hide();
-
-  });
-  function editshowperiode_nilai(){
-  test = document.getElementById('editperiode_nilai').value;
-  if (test == "Bulanan")
-    {
-    $('#show_heading').show();
-    $('#show_heading2').hide();
-    $('#show_heading3').hide();
-    $('#show_heading4').hide();
-    } else if (test == "Quarter") {
-    $('#show_heading2').show();
-    $('#show_heading').hide();
-    $('#show_heading3').hide();
-    $('#show_heading4').hide();
-    } else if (test == "Semester") {
-    $('#show_heading3').show();
-    $('#show_heading').hide();
-    $('#show_heading2').hide();
-    $('#show_heading4').hide();
-    }else if (test == "Tahunan") {
-    $('#show_heading4').show();
-    $('#show_heading').hide();
-    $('#show_heading3').hide();
-    $('#show_heading2').hide();
-    }
-
-  }
-  </script>
-
-
-
 
   @endsection

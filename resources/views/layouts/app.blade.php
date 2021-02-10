@@ -36,9 +36,9 @@
   <!-- Page Wrapper -->
 
   <div id="wrapper">
-  @include('layouts.sidebar')
-    <!-- Sidebar -->
 
+    <!-- Sidebar -->
+    @include('layouts.sidebar')
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -46,16 +46,19 @@
       @include('layouts.header')
       <!-- Main Content -->
       <div class="container-fluid">
+        <div class="scroll">
           <!-- Content Wrapper. Contains page content -->
           @yield('content')
 
-          <div class="container-fluid">
-            @include('layouts.footer')
-          </div>
+          @include('layouts.footer')
+
+        </div>
 
       </div>
+
     </div>
     <!-- End of Content Wrapper -->
+
   </div>
   <!-- End of Page Wrapper -->
 

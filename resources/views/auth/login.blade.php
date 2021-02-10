@@ -154,7 +154,7 @@ body{
 	<!-- Footer -->
 	<div class="container-fluid text-center footer" style="color: whitesmoke">
 		Coded AKIO by <a style="color: whitesmoke">Earth Life.Id.</a></p>
-    <small>© 2020 ALL Rights Reserved</small>
+    <small>© 2021 ALL Rights Reserved</small>
 	</div>
 
   <script>

@@ -1,10 +1,5 @@
 
-<style media="screen">
 
-</style>
-
-
-<aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
 
   <div id="wrapper">
@@ -27,6 +22,8 @@
   </div><br>
   <div class="user-info">
    <span class="user-name" style="color: white; font-family: Verdana; font-weight: bold">{{auth()->user()->name}}</span><br>
+  <span class="user-role" style="color: white; font-family: Verdana;">{{auth()->user()->role}}</span>
+
   </div>
 </div>
 
@@ -99,7 +96,7 @@
                     <ul class="treeview-menu">
                         <h6 >Custom Utilities:</h6>
                       <li><a href="{{url('employee.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Employee</a></li>
-                      <li><a href="{{url('hakakses.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Hak Akses</a></li>
+                      <!--<li><a href="{{url('hakakses.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Hak Akses</a></li>-->
                     </ul>
                 </div>
             </div>
@@ -246,7 +243,7 @@
             <a class="nav-link" href="{{ route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt "></i>
                 <span>Log Out</span></a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none" >
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
         </li>
@@ -261,4 +258,3 @@
     <!-- End of Sidebar -->
 
   <!-- /.sidebar -->
-</aside>

@@ -22,7 +22,7 @@
     </style>
 
 <div ="container-fluid">
-<div class="content-wrapper">
+  <div class="content-wrapper">
       <!-- Content Header (Page header) -->
           <h1>Input Target Kerja</h1>
             <hr class="sidebar-divider">
@@ -62,6 +62,7 @@
 
           </thead>
         </table>
+
             <div class="modal-body">
               <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
@@ -74,6 +75,62 @@
                         {{ session('status') }}
                     </div>
                 @endif
+
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+
+                      <thead>
+
+                            <tr>
+                              <th>No</th>
+                              <th>Kuadran</th>
+                              <th>KPI</th>
+                              <th>Satuan</th>
+                              <th>Document</th>
+                              <th>nilai_maksimal</th>
+                              <th>Tipe Penilaian</th>
+                              <th>Target Absolut</th>
+                              <th>Bobot</th>
+                              <th>Status</th>
+                              <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($set_target as $set)
+                            <tr>
+                                <td>{{$loop-> iteration}}</td>
+                                <td>{{$set ->kode_kuadran}}</td>
+                                <td>{{$set ->kode_kpi}}</td>
+                                <td>{{$set ->kode_satuan}}</td>
+                                <td>{{$set ->kode_dcm}}</td>
+                                <td>{{$set ->kode_nmax}}</td>
+                                <td>{{$set ->kode_nilai}}</td>
+                                <td>{{$set ->target_absolut}}</td>
+                                <td>{{$set ->bobot}}</td>
+                                <td> <!--<span class="btn {{($set->status == 0) ? 'btn-success' :'btn-danger' }}">{{($set->status == 0) ? 'Publish':'Pending'}}</span>--></td>
+                                <td>
+                                      <a data-toggle="modal" data-target="#edit-{{$set->id_target}}"><i class="material-icons">&#xE254;</i></a>
+                                      <a href="user.target_kerja.index.destroy{{$set->id_kerja}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>No</th>
+                                <th>Kuadran</th>
+                                <th>KPI</th>
+                                <th>Satuan</th>
+                                <th>Document</th>
+                                <th>nilai_maksimal</th>
+                                <th>Tipe Penilaian</th>
+                                <th>Target Absolut</th>
+                                <th>Bobot</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </tfoot>
+
+                    </table>
             <!-- Tambah Modal -->
                 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
@@ -386,50 +443,50 @@
     <tr>
       <td >Januari</td>
       <td >:</td>
-      <td> <input type="text" placeholder="Januari" name="target_01" class="form-control" id="target_01" value=""> </td>
+      <td> <input type="text" placeholder="Januari" name="target_01" class="form-control" id="target_01" value="{{$set->target_01}}"> </td>
       <td>Februari</td>
       <td >:</td>
-      <td><input type="text" placeholder="Februari" name="target_02" class="form-control"  id="target_02" value=""> </td>
+      <td><input type="text" placeholder="Februari" name="target_02" class="form-control"  id="target_02" value="{{$set->target_02}}"> </td>
       <td >Maret</td>
       <td >:</td>
-      <td><input type="text" placeholder="Maret" name="target_03" class="form-control"  id="target_03" value=""> </td>
+      <td><input type="text" placeholder="Maret" name="target_03" class="form-control"  id="target_03" value="{{$set->target_03}}"> </td>
     </tr>
 
     <tr>
       <td>April</td>
       <td>:</td>
-      <td><input type="text" placeholder="April" name="target_04" class="form-control"  id="target_04" value=""> </td>
+      <td><input type="text" placeholder="April" name="target_04" class="form-control"  id="target_04" value="{{$set->target_04}}"> </td>
       <td>Mei</td>
       <td >:</td>
-      <td><input type="text" placeholder="Mei" name="target_05" class="form-control"  id="target_05" value=""> </td>
+      <td><input type="text" placeholder="Mei" name="target_05" class="form-control"  id="target_05" value="{{$set->target_05}}"> </td>
       <td >Juni</td>
       <td >:</td>
-      <td><input type="text" placeholder="Juni" name="target_06" class="form-control" id="target_06" value=""> </td>
+      <td><input type="text" placeholder="Juni" name="target_06" class="form-control" id="target_06" value="{{$set->target_06}}"> </td>
     </tr>
 
 
     <tr>
       <td >Juli</td>
       <td >:</td>
-      <td><input type="text" placeholder="Juli" name="target_07" class="form-control"  id="target_07" value=""> </td>
+      <td><input type="text" placeholder="Juli" name="target_07" class="form-control"  id="target_07" value="{{$set->target_07}}"> </td>
       <td>Agustus</td>
       <td >:</td>
-      <td><input type="text" placeholder="Agustus" name="target_08" class="form-control"  id="target_08" value=""> </td>
+      <td><input type="text" placeholder="Agustus" name="target_08" class="form-control"  id="target_08" value="{{$set->target_08}}"> </td>
       <td>September</td>
       <td >:</td>
-      <td><input type="text" placeholder="September" name="target_09" class="form-control"  id="target_09" value=""> </td>
+      <td><input type="text" placeholder="September" name="target_09" class="form-control"  id="target_09" value="{{$set->target_09}}"> </td>
     </tr>
 
     <tr>
       <td>Oktober</td>
       <td >:</td>
-      <td><input type="text" placeholder="Oktober" name="target_10" class="form-control"  id="target_10" value=""> </td>
+      <td><input type="text" placeholder="Oktober" name="target_10" class="form-control"  id="target_10" value="{{$set->target_10}}"> </td>
       <td>November</td>
       <td>:</td>
-      <td><input type="text" placeholder="November" name="target_11" class="form-control"  id="target_11" value=""> </td>
+      <td><input type="text" placeholder="November" name="target_11" class="form-control"  id="target_11" value="{{$set->target_11}}"> </td>
       <td>Desember</td>
       <td >:</td>
-      <td><input type="text" placeholder="Desember" name="target_12" class="form-control"  id="target_12" value=""> </td>
+      <td><input type="text" placeholder="Desember" name="target_12" class="form-control"  id="target_12" value="{{$set->target_12}}"> </td>
     </tr>
     </tbody>
     </table>
@@ -441,29 +498,29 @@
     <tr>
     <td> Nilai Quater 1</td>
     <td>:</td>
-    <td ><input type="text" id="q1" placeholder="Target Absolut Q1" name="qtr1" class="form-control" value=""> </td>
-    <td><input type="date" data-provide="datepicker" name="tgl_target_q1" id="tgl_q1" class="form-control" value="" placeholder="Tanggal Q1"></td>
+    <td ><input type="text" id="q1" placeholder="Target Absolut Q1" name="qtr1" class="form-control" value="{{$set->qtr1}}"> </td>
+    <td><input type="date" data-provide="datepicker" name="tgl_target_q1" id="tgl_q1" class="form-control" value="{{$set->tgl_target_q1}}" placeholder="Tanggal Q1"></td>
     </tr>
 
     <tr>
     <td> Nilai Quater 2</td>
     <td >:</td>
-    <td><input type="text" id="q2" placeholder="Target Absolut Q2" name="qtr2" class="form-control" value=""> </td>
-    <td><input type="date" data-provide="datepicker" name="tgl_target_q2" id="tgl_q2" class="form-control" value="" placeholder="Tanggal Q2"></td>
+    <td><input type="text" id="q2" placeholder="Target Absolut Q2" name="qtr2" class="form-control" value="{{$set->qtr2}}"> </td>
+    <td><input type="date" data-provide="datepicker" name="tgl_target_q2" id="tgl_q2" class="form-control" value="{{$set->tgl_target_q2}}" placeholder="Tanggal Q2"></td>
     </tr>
 
     <tr>
     <td> Nilai Quater 3</td>
     <td >:</td>
-    <td> <input type="text" id="q3" placeholder="Target Absolut Q3" name="qtr3" class="form-control" value=""> </td>
-    <td><input type="date" data-provide="datepicker" name="tgl_target_q3" id="tgl_q3" class="form-control" value="" placeholder="Tanggal Q3"></td>
+    <td> <input type="text" id="q3" placeholder="Target Absolut Q3" name="qtr3" class="form-control" value="{{$set->qtr3}}"> </td>
+    <td><input type="date" data-provide="datepicker" name="tgl_target_q3" id="tgl_q3" class="form-control" value="{{$set->tgl_q3}}" placeholder="Tanggal Q3"></td>
     </tr>
 
     <tr>
     <td> Nilai Quater 4</td>
     <td>:</td>
-    <td> <input type="text" id="q4" placeholder="Target Absolut Q4" name="qtr4" class="form-control" value=""> </td>
-    <td><input type="date" data-provide="datepicker" name="tgl_target_q4" id="tgl_q4" class="form-control" value="" placeholder="Tanggal Absolut Q4"></td>
+    <td> <input type="text" id="q4" placeholder="Target Absolut Q4" name="qtr4" class="form-control" value="{{$set->qtr4}}"> </td>
+    <td><input type="date" data-provide="datepicker" name="tgl_target_q4" id="tgl_q4" class="form-control" value="{{$set->tgl_q4}}" placeholder="Tanggal Absolut Q4"></td>
     </tr>
     </tbody>
     </table>
@@ -475,16 +532,16 @@
         <tr>
           <td> Nilai Semester 1</td>
           <td>:</td>
-          <td> <input type="text" id="semester1" placeholder="Target Semester 1" name="target_semester1" class="form-control" value=""> </td>
-          <td> <input type="date" data-provide="datepicker" name="tgl_target_semester1" id="tgl_target_semester1" class="form-control" value="" placeholder="Tanggal Semester 1">
+          <td> <input type="text" id="semester1" placeholder="Target Semester 1" name="target_semester1" class="form-control" value="{{$set->target_semester1}}"> </td>
+          <td> <input type="date" data-provide="datepicker" name="tgl_target_semester1" id="tgl_target_semester1" class="form-control" value="{{$set->tgl_target_semester1}}" placeholder="Tanggal Semester 1">
           </td>
         </tr>
 
         <tr>
           <td> Nilai Semester 2</td>
           <td>:</td>
-          <td><input type="text" id="semester2" placeholder="Target Semester 2" name="target_semester2" class="form-control" value=""> </td>
-          <td><input type="date" data-provide="datepicker" name="tgl_target_semester2" id="tgl_target_semester2" class="form-control active" value="" placeholder="Tanggal Semester 2"></td>
+          <td><input type="text" id="semester2" placeholder="Target Semester 2" name="target_semester2" class="form-control" value="{{$set->target_semester2}}"> </td>
+          <td><input type="date" data-provide="datepicker" name="tgl_target_semester2" id="tgl_target_semester2" class="form-control active" value="{{$set->tgl_target_semester2}}" placeholder="Tanggal Semester 2"></td>
         </tr>
 
       </tbody>
@@ -497,8 +554,8 @@
           <tr>
                 <td>Target Absolut Tahunan</td>
                 <td>:</td>
-                <td>  <input type="text" id="target_tahun_unit" placeholder="Target Absolut" name="target_tahun_unit" class="form-control"> </td>
-                <td><input type="date" data-provide="datepicker" name="tgl_target_tahun_unit" id="tgl_target_tahun_unit" class="form-control" value="" placeholder="Tanggal Target Absolut Tahunan"></td>
+                <td>  <input type="text" id="target_tahun_unit" placeholder="Target Absolut" name="target_tahun_unit" class="form-control" value="{{$set->target_tahun_unit}}"> </td>
+                <td><input type="date" data-provide="datepicker" name="tgl_target_tahun_unit" id="tgl_target_tahun_unit" class="form-control" value="{{$set->tgl_target_tahun_unit}}" placeholder="Tanggal Target Absolut Tahunan"></td>
           </tr>
       </tbody>
     </table>
@@ -540,61 +597,7 @@
 @endforeach
 <!--End Edit Modal -->
 
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
 
-              <thead>
-
-                    <tr>
-                      <th>No</th>
-                      <th>Kuadran</th>
-                      <th>KPI</th>
-                      <th>Satuan</th>
-                      <th>Document</th>
-                      <th>nilai_maksimal</th>
-                      <th>Tipe Penilaian</th>
-                      <th>Target Absolut</th>
-                      <th>Bobot</th>
-                      <th>Status</th>
-                      <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  @foreach ($set_target as $set)
-                    <tr>
-                        <td>{{$loop-> iteration}}</td>
-                        <td>{{$set ->kode_kuadran}}</td>
-                        <td>{{$set ->kode_kpi}}</td>
-                        <td>{{$set ->kode_satuan}}</td>
-                        <td>{{$set ->kode_dcm}}</td>
-                        <td>{{$set ->kode_nmax}}</td>
-                        <td>{{$set ->kode_nilai}}</td>
-                        <td>{{$set ->target_absolut}}</td>
-                        <td>{{$set ->bobot}}</td>
-                        <td> <!--<span class="btn {{($set->status == 0) ? 'btn-success' :'btn-danger' }}">{{($set->status == 0) ? 'Publish':'Pending'}}</span>--></td>
-                        <td>
-                              <a data-toggle="modal" data-target="#edit-{{$set->id_target}}"><i class="material-icons">&#xE254;</i></a>
-                              <a href="user.target_kerja.index.destroy{{$set->id_kerja}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Kuadran</th>
-                        <th>KPI</th>
-                        <th>Satuan</th>
-                        <th>Document</th>
-                        <th>nilai_maksimal</th>
-                        <th>Tipe Penilaian</th>
-                        <th>Target Absolut</th>
-                        <th>Bobot</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </tfoot>
-
-            </table>
           </div>
         </div>
       </div>
@@ -645,11 +648,5 @@
   }
 
   </script>
-
-
-
-
-
-
 
   @endsection

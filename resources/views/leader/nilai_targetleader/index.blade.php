@@ -20,13 +20,15 @@ table{
 padding-top: 20px;
 
 }
-
+ .isi{
+    font-size: 20px;
+ }
   </style>
 
 <div ="container-fluid">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-        <h1>Input Nilai Kerja</h1>
+        <h1>Input Realisasi Kerja</h1>
           <hr class="sidebar-divider">
 
 
@@ -35,7 +37,7 @@ padding-top: 20px;
   <div class="card-header">
     <div class="col-lg-12">
 
-<form class="" action="index.html" method="post">
+<form class="" action="" method="post">
   <table class="table table-over" style="width:100%">
     <thead>
       <tbody>
@@ -71,7 +73,57 @@ padding-top: 20px;
   </table>
 
 
+<!--Input modal-->
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modal-realisasi">Masukkan Realisasi</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 
+        <form method="POST" action="{{action([\App\Http\Controllers\KuadranController::class,'store'])}}">
+          <div class="modal-body">
+          {{csrf_field()}}
+
+          <div class="form-group">
+              <label for="kode_kuadran" class="col-form-label">Nama Kuadran:</label>
+          </div>
+
+          <div class="form-group">
+            <label for="kode_kuadran" class="col-form-label">Nama KPI:</label>
+
+          </div>
+
+          <div class="form-group date">
+            <label for="kode_kuadran" class="col-form-label">Parameter:</label>
+
+          </div>
+
+          <div class="form-group">
+            <label for="kode_kuadran" class="col-form-label">Bobot:</label>
+
+          </div>
+
+          <div class="form-group">
+            <label for="kode_kuadran" class="col-form-label">Tipe Penilaian:</label>
+
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="submit" class="btn btn-danger" data-dismiss="modal">Batal</button>
+          </div>
+
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+<!-- End Input modal-->
 
   <table id="example" class="table table-striped table-bordered" style="width:100%">
 
@@ -98,10 +150,8 @@ padding-top: 20px;
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td >
-                        <a class="btn btn-success" data-toggle="modal" data-target="#edit-">Input</a>
-                        <a class="btn btn-warning" data-toggle="modal" data-target="#edit-">Edit</a>
-
+                  <td class="text-center">
+                      <a class="isi" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
                   </td>
               </tr>
           </tbody>
@@ -119,8 +169,8 @@ padding-top: 20px;
               </tr>
           </tfoot>
       </table>
-      <button id="btn2" type="button" class="btn btn-success" onclick="return confirm('Apakah anda yakin hasil KPI untuk disubmit ?')">Submit</button>
-      <button id="btn1" type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Save</button>
+      <button  type="button" class="btn btn-success" onclick="return confirm('Apakah anda yakin hasil KPI untuk disubmit ?')">Submit</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">Save</button>
 </form>
 
 
@@ -132,5 +182,12 @@ padding-top: 20px;
 
   </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+$('#example').DataTable( {
+    } );
+  } );
+</script>
+
 
   @endsection
