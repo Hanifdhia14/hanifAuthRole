@@ -46,13 +46,12 @@
       @include('layouts.header')
       <!-- Main Content -->
       <div class="container-fluid">
-        <div class="scroll">
-          <!-- Content Wrapper. Contains page content -->
-          @yield('content')
 
-          @include('layouts.footer')
-
-        </div>
+          <div class="scroll">
+            <!-- Content Wrapper. Contains page content -->
+            @yield('content')
+            @include('layouts.footer')
+          </div>
 
       </div>
 
