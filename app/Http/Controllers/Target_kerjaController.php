@@ -10,10 +10,6 @@ use App\Models\Target_kerja;
 
 use App\Models\Kuadran;
 use App\Models\Kpi;
-use App\Models\Satuan;
-use App\Models\Document;
-use App\Models\Tipenilai;
-use App\Models\Nilaimaksimal;
 
 class Target_kerjaController extends Controller
 {
@@ -22,11 +18,7 @@ class Target_kerjaController extends Controller
         $set_target= Target_kerja::all();
         $kuadrans= Kuadran::select('kode_kuadran', 'kuadran')->get();
         $kpis= Kpi::select('kode_kpi', 'nama_kpi', 'description', 'polaritas', 'parameter')->get();
-        $satuans= Satuan::select('kode_satuan', 'satuan')->get();
-        $dkms= Document::select('kode_dcm', 'document')->get();
-        $tipe_nilai= Tipenilai::select('kode_nilai', 'tipe_penilaian')->get();
-        $nmaxs= Nilaimaksimal::select('kode_nmax', 'nilai_maksimal')->get();
-        return view('user.target_kerja.index', compact('kuadrans', 'kpis', 'satuans', 'dkms', 'tipe_nilai', 'nmaxs', 'set_target'));
+        return view('user.target_kerja.index', compact('kuadrans', 'kpis', 'set_target'));
     }
 
 

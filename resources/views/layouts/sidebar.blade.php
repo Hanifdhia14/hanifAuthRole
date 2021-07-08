@@ -74,10 +74,6 @@
                     <h6>Custom Utilities:</h6>
                     <li><a href="{{url('kuadran.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Kuadran</a></li>
                     <li><a href="{{url('kpi.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> KPI</a></li>
-                    <li><a href="{{url('tipe_penilaian.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Tipe Penilaian</a></li>
-                    <li><a href="{{url('satuan.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Satuan</a></li>
-                    <li><a href="{{url('nilai_maksimal.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Maksimal</a></li>
-                    <li><a href="{{url('document.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Dokument</a></li>
                   </ul>
                 </div>
             </div>
@@ -98,6 +94,22 @@
                       <li><a href="{{url('employee.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Employee</a></li>
                       <!--<li><a href="{{url('hakakses.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Hak Akses</a></li>-->
                     </ul>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>User Management:</span>
+            </a>
+            <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <ul class="treeview-menu">
+                    <h6>Custom Utilities:</h6>
+                    <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i> Create User</a></li>
+
+                  </ul>
                 </div>
             </div>
         </li>
@@ -203,9 +215,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <ul class="treeview-menu">
                         <h6 >Custom Utilities:</h6>
-                      <li><a href="{{url('leader.target_kerjaleader.index')}}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
-                      <li><a href="{{url('leader.nilai_targetleader.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
-                      <li><a href="{{url('leader.approv.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Approve Set Kerja</a></li>
+
+                      <li><a href="{{url('leader.approv.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i>Approval</a></li>
                     </ul>
                 </div>
             </div>
@@ -230,7 +241,6 @@
                   <ul class="treeview-menu">
 
                     <h6>Monitoring Screens:</h6>
-                    <li><a href="{{url('leader.repotleader.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
                     <li><a href="{{url('leader.nilai_staff.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Staff </a></li>
                   </ul>
                 </div>

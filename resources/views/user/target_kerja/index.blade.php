@@ -84,10 +84,6 @@
                               <th>No</th>
                               <th>Kuadran</th>
                               <th>KPI</th>
-                              <th>Satuan</th>
-                              <th>Document</th>
-                              <th>nilai_maksimal</th>
-                              <th>Tipe Penilaian</th>
                               <th>Target Absolut</th>
                               <th>Bobot</th>
                               <th>Status</th>
@@ -100,10 +96,6 @@
                                 <td>{{$loop-> iteration}}</td>
                                 <td>{{$set ->kode_kuadran}}</td>
                                 <td>{{$set ->kode_kpi}}</td>
-                                <td>{{$set ->kode_satuan}}</td>
-                                <td>{{$set ->kode_dcm}}</td>
-                                <td>{{$set ->kode_nmax}}</td>
-                                <td>{{$set ->kode_nilai}}</td>
                                 <td>{{$set ->target_absolut}}</td>
                                 <td>{{$set ->bobot}}</td>
                                 <td> <!--<span class="btn {{($set->status == 0) ? 'btn-success' :'btn-danger' }}">{{($set->status == 0) ? 'Publish':'Pending'}}</span>--></td>
@@ -119,10 +111,6 @@
                                 <th>No</th>
                                 <th>Kuadran</th>
                                 <th>KPI</th>
-                                <th>Satuan</th>
-                                <th>Document</th>
-                                <th>nilai_maksimal</th>
-                                <th>Tipe Penilaian</th>
                                 <th>Target Absolut</th>
                                 <th>Bobot</th>
                                 <th>Status</th>
@@ -163,37 +151,6 @@
                             @endforeach
                           </select>
                       </div>
-
-                      <div class="modal-body">
-                          <label for="kode_satuan" class="col-form-label">Satuan:</label>
-                          <select type="text" name="kode_satuan" id="kode_satuan" class="form-control">
-                            <option value=""> ==Pilih Satuan== </option>
-                            @foreach($satuans as $item)
-                              <option value="{{$item->satuan}}">{{$item->satuan}}</option>
-                            @endforeach
-                          </select>
-                      </div>
-
-                      <div class="modal-body">
-                          <label for="kode_dcm" class="col-form-label">Document:</label>
-                          <select type="text" name="kode_dcm" id="kode_dcm" class="form-control">
-                            <option value=""> ==Pilih Document== </option>
-                            @foreach($dkms as $item)
-                              <option value="{{$item->document}}">{{$item->document}}</option>
-                            @endforeach
-                          </select>
-                      </div>
-
-                      <div class="modal-body">
-                          <label for="kode_nmax" class="col-form-label">Nilai Maksimal:</label>
-                          <select type="text" name="kode_nmax" id="kode_nmax" class="form-control">
-                            <option value=""> ==Pilih Nilai Maksimal==</option>
-                            @foreach($nmaxs as $item)
-                              <option value="{{$item->nilai_maksimal}}">{{$item->nilai_maksimal}}</option>
-                            @endforeach
-                          </select>
-                       </div>
-
 
                     <div class="modal-body">
                       <label for="kode_nilai" class="col-form-label">Tipe Penilaian</label>
@@ -397,36 +354,6 @@
           </select>
       </div>
 
-      <div class="modal-body">
-          <label for="kode_satuan" class="col-form-label">Satuan:</label>
-          <select type="text" name="kode_satuan" id="kode_satuan" class="form-control">
-            <option value="">{{$set->kode_satuan}}</option>
-            @foreach($satuans as $item)
-              <option value="{{$item->satuan}}">{{$item->satuan}}</option>
-            @endforeach
-          </select>
-      </div>
-
-      <div class="modal-body">
-          <label for="kode_dcm" class="col-form-label">Document:</label>
-          <select type="text" name="kode_dcm" id="kode_dcm" class="form-control">
-            <option value="">{{$set->kode_dcm}}</option>
-            @foreach($dkms as $item)
-              <option value="{{$item->document}}">{{$item->document}}</option>
-            @endforeach
-          </select>
-      </div>
-
-      <div class="modal-body">
-          <label for="kode_nmax" class="col-form-label">Nilai Maksimal:</label>
-          <select type="text" name="kode_nmax" id="kode_nmax" class="form-control">
-            <option value="">{{$set->kode_nmax}}</option>
-            @foreach($nmaxs as $item)
-              <option value="{{$item->nilai_maksimal}}">{{$item->nilai_maksimal}}</option>
-            @endforeach
-          </select>
-       </div>
-
 
     <div class="modal-body">
       <label for="kode_nilai" class="col-form-label">Tipe Penilaian</label>
@@ -560,8 +487,6 @@
       </tbody>
     </table>
     </div>
-
-
 
 
     </div>
