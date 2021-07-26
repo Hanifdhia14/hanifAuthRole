@@ -17,7 +17,7 @@ class Target_kerjaController extends Controller
     {
         $set_target= Target_kerja::all();
         $kuadrans= Kuadran::select('kode_kuadran', 'kuadran')->get();
-        $kpis= Kpi::select('kode_kpi', 'nama_kpi', 'description', 'polaritas', 'parameter')->get();
+        $kpis= Kpi::select('kode_kpi', 'start_date', 'end_date', 'nama_kpi', 'description', 'polaritas', 'rumus', 'satuan', 'dokumen')->get();
         return view('user.target_kerja.index', compact('kuadrans', 'kpis', 'set_target'));
     }
 

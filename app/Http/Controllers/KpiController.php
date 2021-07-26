@@ -42,21 +42,25 @@ class KpiController extends Controller
     {
         $request->validate([
         'kode_kpi' => 'required',
+        'start_date' => 'required',
+        'end_date' => 'required',
         'nama_kpi' => 'required',
         'description' => 'required',
         'polaritas' => 'required',
-        'parameter' => 'required',
-        'start_date' => 'required',
-        'end_date' => 'required'
-    ]);
+        'rumus' => 'required',
+        'satuan' => 'required',
+        'dokumen' => 'required'
+      ]);
         $kpi = new kpi;
         $kpi-> kode_kpi = $request-> kode_kpi;
+        $kpi-> start_date = $request-> start_date;
+        $kpi-> end_date = $request-> end_date;
         $kpi-> nama_kpi = $request-> nama_kpi;
         $kpi-> description = $request-> description;
         $kpi-> polaritas= $request-> polaritas;
-        $kpi-> parameter= $request-> parameter;
-        $kpi-> start_date = $request-> start_date;
-        $kpi-> end_date = $request-> end_date;
+        $kpi-> rumus= $request-> rumus;
+        $kpi-> satuan= $request-> satuan;
+        $kpi-> dokumen= $request-> dokumen;
         $kpi->save();
         // alihkan halaman ke halaman pegawai
         return redirect('kpi.index')-> with('status', 'Data KPI Telah Berhasil Ditambahkan!');
@@ -82,13 +86,15 @@ class KpiController extends Controller
     public function edit(Request $request)
     {
         $request->validate([
-      'kode_kpi' => 'required',
-      'nama_kpi' => 'required',
-      'description' => 'required',
-      'polaritas' => 'required',
-      'parameter' => 'required',
-      'start_date' => 'required',
-      'end_date' => 'required'
+          'kode_kpi' => 'required',
+          'start_date' => 'required',
+          'end_date' => 'required',
+          'nama_kpi' => 'required',
+          'description' => 'required',
+          'polaritas' => 'required',
+          'rumus' => 'required',
+          'satuan' => 'required',
+          'dokumen' => 'required'
       ]);
         if ($request->isMethod('POST')) {
             $kpi = $request->all();
@@ -96,12 +102,14 @@ class KpiController extends Controller
         Kpi::where('kode_kpi', $request->kode_kpi)
             ->update([
               'kode_kpi'=> $request-> kode_kpi,
+              'start_date'=> $request-> start_date,
+              'end_date'=> $request-> end_date,
               'nama_kpi'=> $request-> nama_kpi,
               'description' => $request-> description,
               'polaritas' => $request-> polaritas,
               'parameter' => $request-> parameter,
-              'start_date'=> $request-> start_date,
-              'end_date'=> $request-> end_date
+              'satuan'=> $request-> satuan,
+              'dokumen'=> $request-> dokumen,
           ]);
         return redirect('kpi.index')-> with('status', 'Data kpi Telah Berhasil Diubah!');
     }

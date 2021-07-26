@@ -40,25 +40,23 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nik' => 'required',
+            'nik_id' => 'required',
             'nama' => 'required',
-            'level' => 'required',
             'jabatan' => 'required',
-            'unit_kerja' => 'required',
+            'divisi' => 'required',
             'direktorat' => 'required',
-            'wilayah' => 'required',
+            'alamat' => 'required',
             'email' => 'required',
             'no_tlp' => 'required',
         ]);
 
         $employee = new employee;
-        $employee-> nik = $request-> nik;
+        $employee-> nik_id = $request-> nik_id;
         $employee-> nama = $request-> nama;
-        $employee-> level = $request-> level;
         $employee-> jabatan = $request-> jabatan;
-        $employee-> unit_kerja = $request-> unit_kerja;
-        $employee-> direktorat = $request-> direktorat;
-        $employee-> wilayah = $request-> wilayah;
+        $employee-> divisi = $request-> divisi;
+        $employee-> direktorat= $request-> direktorat;
+        $employee-> alamat = $request-> alamat;
         $employee-> email = $request-> email;
         $employee-> no_tlp = $request-> no_tlp;
         $employee->save();
@@ -87,13 +85,12 @@ class EmployeeController extends Controller
     public function edit(Request $request)
     {
         $request->validate([
-          'nik' => 'required',
+          'nik_id' => 'required',
           'nama' => 'required',
-          'level' => 'required',
           'jabatan' => 'required',
-          'direktorat' => 'required',
-          'unit_kerja' => 'required',
-          'wilayah' => 'required',
+          'divisi' => 'required',
+          'direktorat' =>'required',
+          'alamat' => 'required',
           'email' => 'required',
           'no_tlp' => 'required',
       ]);
@@ -111,13 +108,12 @@ class EmployeeController extends Controller
         //]);
         Employee::where('nik', $request->nik)
          ->update([
-           'nik' => $request->nik,
+           '$nik_id' => $request->nik_id,
            'nama' => $request->nama,
-           'level' => $request->level,
            'jabatan' => $request->jabatan,
-           'unit_kerja' => $request->unit_kerja,
+           'divisi' => $request->divisi,
            'direktorat' => $request->direktorat,
-           'wilayah' => $request->wilayah,
+           'alamat' => $request->alamat,
            'email' => $request->email,
            'no_tlp' => $request->no_tlp
        ]);
@@ -142,9 +138,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($nik)
+    public function destroy($nik_id)
     {  // menghapus data Kuadran berdasarkan id yang dipilih
-        DB::table('employee')->where('nik', $nik)->delete();
+        DB::table('employee')->where('nik_id', $nik_id)->delete();
 
         // alihkan halaman ke halaman kuadran
         return redirect('employee.index')-> with('status', 'Data Employee Telah Berhasil Dihapus!');

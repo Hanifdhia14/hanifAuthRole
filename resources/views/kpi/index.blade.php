@@ -24,7 +24,7 @@ table{
 <div ="container-fluid">
 
     <!-- Content Header (Page header) -->
-        <h1>KPI <small>Imput Nama KPI</small></h1>
+        <h1>KPI <small>Imput Data KPI</small></h1>
       <hr class="sidebar-divider">
 
         <div class="card-header">
@@ -58,6 +58,21 @@ table{
           </div>
 
           <div class="form-group">
+            <label for="start_date" class="col-form-label">Start Date:</label>
+            <input name="start_date"type="date" class="form-control @error('start_date')is-invalid @enderror" id="kpi" placeholder="Masukkan Start Date" value="{{old('start_date')}}">
+            @error('start_date')
+              <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="end_date" class="col-form-label">End Date:</label>
+            <input name="end_date"type="date" class="form-control @error('end_date')is-invalid @enderror" id="kpi" placeholder="Masukkan End Date" value="{{old('end_date')}}">
+            @error('end_date')
+              <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+          </div>
+
+          <div class="form-group">
             <label for="nama_kpi" class="col-form-label">Nama KPI:</label>
             <input name="nama_kpi"type="text" class="form-control @error('nama_kpi')is-invalid @enderror" id="nama_kpi" placeholder="Masukkan Nama KPI" value="{{old('nama_kpi')}}">
             @error('nama_kpi')
@@ -85,26 +100,29 @@ table{
           </div>
 
           <div class="form-group">
-            <label for="parameter" class="col-form-label">Parameter:</label>
-            <input name="parameter" type="text" class="form-control @error('parameter')is-invalid @enderror" id="parameter" placeholder="Masukkan Parameter" value="{{old('parameter')}}">
+            <label for="rumus" class="col-form-label">Rumus:</label>
+            <input name="rumus" type="text" class="form-control @error('rumus')is-invalid @enderror" id="rumus" placeholder="Masukkan Rumus" value="{{old('rumus')}}">
             @error('parameter')
               <div class="invalid-feedback">{{$message}}</div>
             @enderror
           </div>
+
           <div class="form-group">
-            <label for="start_date" class="col-form-label">Start Date:</label>
-            <input name="start_date"type="date" class="form-control @error('start_date')is-invalid @enderror" id="kpi" placeholder="Masukkan Start Date" value="{{old('start_date')}}">
-            @error('start_date')
-              <div class="invalid-feedback">{{$message}}</div>
-            @enderror
+            <label for="satuan" class="col-form-label">Satuan:</label>
+              <input name="satuan"type="text" class="form-control @error('satuan')is-invalid @enderror" id="satuan" placeholder="Masukkan Satuan" value="{{old('satuan')}}">
+              @error('description')
+                <div class="invalid-feedback">{{$message}}</div>
+              @enderror
           </div>
+
           <div class="form-group">
-            <label for="end_date" class="col-form-label">End Date:</label>
-            <input name="end_date"type="date" class="form-control @error('end_date')is-invalid @enderror" id="kpi" placeholder="Masukkan End Date" value="{{old('end_date')}}">
-            @error('end_date')
-              <div class="invalid-feedback">{{$message}}</div>
-            @enderror
+            <label for="dokumen" class="col-form-label">Dokumen:</label>
+              <input name="dokumen"type="text" class="form-control @error('dokumen')is-invalid @enderror" id="dokumen" placeholder="Masukkan Dokumen" value="{{old('dokumen')}}">
+              @error('description')
+                <div class="invalid-feedback">{{$message}}</div>
+              @enderror
           </div>
+
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Buat</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
@@ -145,6 +163,16 @@ table{
       </div>
 
       <div class="form-group">
+        <label for="start_date" class="col-form-label">Start Date:</label>
+        <input name="start_date" type="date" class="form-control @error('start_date')is-invalid @enderror" id="kpi" placeholder="Masukkan Start Date" value="{{$kp->start_date}}">
+      </div>
+
+      <div class="form-group">
+        <label for="end_date" class="col-form-label">End Date:</label>
+        <input name="end_date" type="date" class="form-control @error('end_date')is-invalid @enderror" id="kpi" placeholder="Masukkan End Date" value="{{$kp->end_date}}">
+      </div>
+
+      <div class="form-group">
         <label for="description" class="col-form-label">Description:</label>
           <input name="description"type="text" class="form-control @error('description')is-invalid @enderror" id="description" placeholder="Masukkan Description" value="{{$kp->description}}">
       </div>
@@ -159,18 +187,18 @@ table{
       </div>
 
       <div class="form-group">
-        <label for="parameter" class="col-form-label">Parameter:</label>
-        <input name="parameter" type="text" class="form-control @error('parameter')is-invalid @enderror" id="parameter" placeholder="Masukkan Parameter" value="{{$kp->parameter}}">
+        <label for="rumus" class="col-form-label">Rumus:</label>
+        <input name="parameter" type="text" class="form-control @error('rumus')is-invalid @enderror" id="rumus" placeholder="Masukkan Rumus" value="{{$kp->rumus}}">
       </div>
 
       <div class="form-group">
-        <label for="start_date" class="col-form-label">Start Date:</label>
-        <input name="start_date" type="date" class="form-control @error('start_date')is-invalid @enderror" id="kpi" placeholder="Masukkan Start Date" value="{{$kp->start_date}}">
+        <label for="satuan" class="col-form-label">Satuan:</label>
+        <input name="parameter" type="text" class="form-control @error('satuan')is-invalid @enderror" id="satuan" placeholder="Masukkan Satuan" value="{{$kp->satuan}}">
       </div>
 
       <div class="form-group">
-        <label for="end_date" class="col-form-label">End Date:</label>
-        <input name="end_date" type="date" class="form-control @error('end_date')is-invalid @enderror" id="kpi" placeholder="Masukkan End Date" value="{{$kp->end_date}}">
+        <label for="dokumen" class="col-form-label">Dokumen:</label>
+        <input name="dokumen" type="text" class="form-control @error('dokumen')is-invalid @enderror" id="dokumen" placeholder="Masukkan Dokumen" value="{{$kp->dokumen}}">
       </div>
 
       <div class="modal-footer">
@@ -190,12 +218,14 @@ table{
           <tr>
               <th>No</th>
               <th>Kode KPI</th>
+              <th>Start Date</th>
+              <th>End Date</th>
               <th>Nama KPI</th>
               <th>Deskripsi</th>
               <th>Polaritas</th>
-              <th>Parameter</th>
-              <th>Start Date</th>
-              <th>End Date</th>
+              <th>Rumus</th>
+              <th>Satuan</th>
+              <th>Dokumen</th>
               <th>Aksi</th>
           </tr>
       </thead>
@@ -205,12 +235,14 @@ table{
         <tr>
           <td>{{$loop-> iteration}}</td>
           <td>{{$kp ->kode_kpi}}</td>
+          <td>{{$kp ->start_date}}</td>
+          <td>{{$kp ->end_date}}</td>
           <td>{{$kp ->nama_kpi}}</td>
           <td>{{$kp ->description}}</td>
           <td>{{$kp ->polaritas}}</td>
-          <td>{{$kp ->parameter}}</td>
-          <td>{{$kp ->start_date}}</td>
-          <td>{{$kp ->end_date}}</td>
+          <td>{{$kp ->rumus}}</td>
+          <td>{{$kp ->satuan}}</td>
+          <td>{{$kp ->dokumen}}</td>
           <td >
               <a data-toggle="modal" data-target="#edit{{$kp->kode_kpi}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
               <a href="kpi.index.destroy{{$kp->kode_kpi }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
@@ -223,12 +255,14 @@ table{
           <tr>
             <th>No</th>
             <th>Kode KPI</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Nama KPI</th>
             <th>Deskripsi</th>
             <th>Polaritas</th>
             <th>Parameter</th>
-            <th>Start Date</th>
-            <th>End Date</th>
+            <th>Satuan</th>
+            <th>Dokumen</th>
             <th>Aksi</th>
           </tr>
       </tfoot>

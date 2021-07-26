@@ -40,8 +40,8 @@
 
 
 <!-- Content tambah modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
               <h2 class="modal-title" id="exampleModalLabel">Tambah Employee</h2>
@@ -55,8 +55,8 @@
             {{csrf_field()}}
 
             <div class="form-group">
-              <label for="nik" class="col-form-label">NIK:</label>
-              <input name="nik" type="text "class="form-control @error('nik')is-invalid @enderror" id="nik" placeholder="Masukkan NIK" value="{{old('nik')}}">
+              <label for="nik_id" class="col-form-label">NIK:</label>
+              <input name="nik_id" type="text "class="form-control @error('nik_id')is-invalid @enderror" id="nik_id" placeholder="Masukkan NIK" value="{{old('nik_id')}}">
               @error('nik')
                 <div class="invalid-feedback">{{$message}}</div>
               @enderror
@@ -71,54 +71,54 @@
             </div>
 
             <div class="form-group">
-              <label for="level" class="col-form-label">Level:</label>
-              <select name="level" type="text" class="form-control @error('level')is-invalid @enderror" id="Level" placeholder="Masukkan Level" value="{{old('level')}}">
-                  	<option>-Pilih-</option>
-                    <option>D1</option>
-                    <option>D2</option>
-                    <option>D3</option>
-                    <option>D4</option>
-                  </select>
-              @error('level')
-                <div class="invalid-feedback">{{$message}}</div>
-              @enderror
-            </div>
-
-            <div class="form-group">
               <label for="jabatan" class="col-form-label">Jabatan:</label>
-              <input name="jabatan"type="text" class="form-control @error('jabatan')is-invalid @enderror" id="jabatan" placeholder="Masukkan jabatan" value="{{old('jabatan')}}">
+              <select name="jabatan" type="text" class="form-control @error('jabatan')is-invalid @enderror" id="jabatan" placeholder="Masukkan Jabatan" value="{{old('jabatan')}}">
+                  	<option>-Pilih-</option>
+                    <option>Vice President</option>
+                    <option>Manager</option>
+                    <option>Senior Analis</option>
+                    <option>Fungsional</option>
+                    <option>Staff</option>
+                  </select>
               @error('jabatan')
                 <div class="invalid-feedback">{{$message}}</div>
               @enderror
             </div>
 
             <div class="form-group">
-              <label for="unit_kerja" class="col-form-label">Unit Kerja:</label>
-              <input name="unit_kerja" type="text" class="form-control @error('unit_kerja')is-invalid @enderror" id="unit_kerja" placeholder="Masukkan Unit Kerja" value="{{old('unit_kerja')}}">
-              @error('unit_kerja')
+              <label for="divisi" class="col-form-label">Divisi:</label>
+              <input name="divisi"type="text" class="form-control @error('jabatan')is-invalid @enderror" id="divisi" placeholder="Masukkan Divisi" value="{{old('divisi')}}">
+              @error('divisi')
                 <div class="invalid-feedback">{{$message}}</div>
               @enderror
             </div>
 
             <div class="form-group">
-              <label for="direktorat" class="col-form-label">Unit Kerja:</label>
-              <input name="direktorat" type="text" class="form-control @error('direktorat')is-invalid @enderror" id="direktorat" placeholder="Masukkan Unit Kerja" value="{{old('direktorat')}}">
+              <label for="direktorat" class="col-form-label">Direktorat:</label>
+              <select name="direktorat" type="text" class="form-control @error('direktorat')is-invalid @enderror" id="direktorat" placeholder="Masukkan Direktorat" value="{{old('direktorat')}}">
+                  	<option>-Pilih-</option>
+                    <option>Komersial dan Pelayanan</option>
+                    <option>Teknik dan Fasilitas</option>
+                    <option> Perencanaan dan Pengembangan</option>
+                    <option> SDM dan Layanan Korporasi</option>
+                    <option>Keuangan, Teknologi Informasi, dan Manajemen Risiko</option>
+                  </select>
               @error('direktorat')
                 <div class="invalid-feedback">{{$message}}</div>
               @enderror
             </div>
 
             <div class="form-group">
-              <label for="wilayah" class="col-form-label">Wilayah:</label>
-              <input name="wilayah"type="text" class="form-control @error('wilayah')is-invalid @enderror" id="wilayah" placeholder="Masukkan Wilayah" value="{{old('wilayah')}}">
-              @error('wilayah')
+              <label for="alamat" class="col-form-label">Alamat:</label>
+              <input name="alamat" type="text" class="form-control @error('alamat')is-invalid @enderror" id="alamat" placeholder="Masukkan Alamat" value="{{old('alamat')}}">
+              @error('alamat')
                 <div class="invalid-feedback">{{$message}}</div>
               @enderror
             </div>
 
             <div class="form-group">
-              <label for="email"class="col-form-label">Email:</label>
-              <input name="email"type="text" class="form-control @error('email')is-invalid @enderror" id="email" placeholder="Masukkan Email" value="{{old('email')}}">
+              <label for="email" class="col-form-label">E-Mail:</label>
+              <input name="email"type="text" class="form-control @error('email')is-invalid @enderror" id="email" placeholder="Masukkan E-mail" value="{{old('email')}}">
               @error('email')
                 <div class="invalid-feedback">{{$message}}</div>
               @enderror
@@ -147,7 +147,7 @@
 
 <!-- Content edit modal -->
   @foreach ($employee as $empl)
-<div class="modal fade" id="editmodal{{$empl->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editmodal{{$empl->nik_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
@@ -162,8 +162,8 @@
         {{csrf_field()}}
 
         <div class="form-group">
-          <label for="nik" class="col-form-label">NIK:</label>
-          <input name="nik" class="form-control @error('nik')is-invalid @enderror " id="nik" placeholder="Masukkan NIK" value="{{$empl->nik}}">
+          <label for="nik_id" class="col-form-label">NIK:</label>
+          <input name="nik_id" class="form-control @error('nik_id')is-invalid @enderror " id="nik_id" placeholder="Masukkan NIK" value="{{$empl->nik_id}}">
         </div>
         <div class="form-group">
           <label for="nama" class="col-form-label">Nama Lengkap:</label>
@@ -171,35 +171,32 @@
         </div>
 
         <div class="form-group">
-          <label for="level" class="col-form-label">Level:</label>
-          <select name="level" type="text" class="form-control @error('level')is-invalid @enderror" id="Level" placeholder="Masukkan Level">
-                <option>{{$empl->level}}</option>
-                <option>D1</option>
-                <option>D2</option>
-                <option>D3</option>
-                <option>D4</option>
+          <label for="jabatan" class="col-form-label">Jabatan:</label>
+          <select name="jabatan" type="text" class="form-control @error('jabatan')is-invalid @enderror" id="jabatan" placeholder="Masukkan Jabatan">
+                <option>{{$empl->jabatan}}</option>
+                <option>Vice President</option>
+                <option>Manager</option>
+                <option>Senior Analis</option>
+                <option>Fungsional</option>
+                <option>Staff</option>
               </select>
         </div>
 
         <div class="form-group">
-          <label for="jabatan" class="col-form-label">Jabatan:</label>
-          <input name="jabatan"type="text" class="form-control @error('jabatan')is-invalid @enderror" id="jabatan" placeholder="Masukkan jabatan" value="{{$empl->jabatan}}">
+          <label for="direktorat" class="col-form-label">Direktorat:</label>
+          <select name="direktorat" type="text" class="form-control @error('direktorat')is-invalid @enderror" id="direktorat" placeholder="Masukkan Direktorat">
+              <option>{{$empl->direktorat}}</option>
+                <option>Vice President</option>
+                <option>Manager</option>
+                <option>Senior Analis</option>
+                <option>Fungsional</option>
+                <option>Staff</option>
+              </select>
         </div>
 
         <div class="form-group">
-          <label for="unit_kerja" class="col-form-label">Unit Kerja:</label>
-          <input name="unit_kerja" type="text" class="form-control @error('unit_kerja')is-invalid @enderror" id="unit_kerja" placeholder="Masukkan Unit Kerja" value="{{$empl->unit_kerja}}">
-        </div>
-
-        <div class="form-group">
-          <label for="direktorat" class="col-form-label">Unit Kerja:</label>
-          <input name="direktorat" type="text" class="form-control @error('direktorat')is-invalid @enderror" id="direktorat" placeholder="Masukkan Unit Kerja" value="{{$empl->direktorat}}">
-        </div>
-
-
-        <div class="form-group">
-          <label for="wilayah" class="col-form-label">Wilayah:</label>
-          <input name="wilayah"type="text" class="form-control @error('wilayah')is-invalid @enderror" id="wilayah" placeholder="Masukkan Wilayah" value="{{$empl->wilayah}}">
+          <label for="alamat" class="col-form-label">Alamat:</label>
+          <input name="alamat"type="text" class="form-control @error('alamat')is-invalid @enderror" id="alamat" placeholder="Masukkan Alamat" value="{{$empl->alamat}}">
         </div>
 
         <div class="form-group">
@@ -224,20 +221,16 @@
 </div>
 @endforeach
 <!-- End Content edit modal -->
-
-
-
           <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
               <tr>
                 <th >No</th>
                 <th >NIK</th>
-                <th >Nama Lengkap</th>
-                <th >Level</th>
+                <th >Nama</th>
                 <th >Jabatan</th>
-                <th >Unit Kerja</th>
+                <th >Divisi</th>
                 <th >Dirktorat</th>
-                <th >Wilayah</th>
+                <th >Alamat</th>
                 <th >Email</th>
                 <th >No.Tlp</th>
                 <th >Aksi</th>
@@ -247,18 +240,17 @@
               @foreach ($employee as $empl)
                 <tr>
                   <th >{{$loop-> iteration}}</th>
-                  <td >{{$empl->nik}}</td>
+                  <td >{{$empl->nik_id}}</td>
                   <td >{{$empl->nama}}</td>
-                  <td >{{$empl->level}}</td>
                   <td >{{$empl->jabatan}}</td>
-                  <td >{{$empl->unit_kerja}}</td>
+                  <td >{{$empl->divisi}}</td>
                   <td >{{$empl->direktorat}}</td>
-                  <td >{{$empl->wilayah}}</td>
+                  <td >{{$empl->alamat}}</td>
                   <td >{{$empl->email}}</td>
                   <td >{{$empl->no_tlp}}</td>
                   <td >
-                      <a data-toggle="modal" data-target="#editmodal{{$empl->nik}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
-                      <a href="employee.index.destroy{{$empl->nik }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                      <a data-toggle="modal" data-target="#editmodal{{$empl->nik_id}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
+                      <a href="employee.index.destroy{{$empl->nik_id }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
                   </td>
                 </tr>
               @endforeach
@@ -267,12 +259,11 @@
                 <tr>
                   <th >No</th>
                   <th >NIK</th>
-                  <th >Nama Lengkap</th>
-                  <th >Level</th>
+                  <th >Nama</th>
                   <th >Jabatan</th>
-                  <th >Unit Kerja</th>
+                  <th >Divisi</th>
                   <th >Dirktorat</th>
-                  <th >Wilayah</th>
+                  <th >Alamat</th>
                   <th >Email</th>
                   <th >No.Tlp</th>
                   <th >Aksi</th>

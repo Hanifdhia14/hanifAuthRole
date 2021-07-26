@@ -21,7 +21,7 @@
      alt="User picture" width="50">
   </div><br>
   <div class="user-info">
-   <span class="user-name" style="color: white; font-family: Verdana; font-weight: bold">{{auth()->user()->name}}</span><br>
+   <span class="user-name" style="color: white; font-family: Verdana; font-weight: bold">{{auth()->user()->nama}}</span><br>
   <span class="user-role" style="color: white; font-family: Verdana;">{{auth()->user()->role}}</span>
 
   </div>
@@ -107,7 +107,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                   <ul class="treeview-menu">
                     <h6>Custom Utilities:</h6>
-                    <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i> Create User</a></li>
+                    <li><a href="{{url('create_user.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Create User</a></li>
 
                   </ul>
                 </div>
@@ -250,12 +250,13 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+            <a class="nav-link" href="{{ url()->route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt "></i>
                 <span>Log Out</span></a>
                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
+
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

@@ -34,19 +34,19 @@
             <tbody>
 
                    <tr>
-                      <th width="150">Jabatan</th>
+                      <th width="150">Nama</th>
                       <td>:</td>
                    </tr>
                    <tr>
-                      <th>Level</th>
+                      <th>NIK</th>
                       <td>:</td>
                    </tr>
                    <tr>
-                      <th>Unit Kerja </th>
+                      <th>Jabatan</th>
                       <td>:</td>
                    </tr>
                    <tr>
-                      <th>Wilayah</th>
+                      <th>Divisi</th>
                       <td>:</td>
                    </tr>
                   <th> Tahun </th>
