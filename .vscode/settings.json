@@ -1,6 +1,7 @@
 {
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "material-icon-theme",
     "editor.fontSize": 15,
     "terminal.integrated.fontSize": 15,
-    "workbench.colorTheme": "Solarized Dark"
+    "workbench.colorTheme": "Abyss",
+    "liveServer.settings.multiRootWorkspaceName": "hanifAuthRole"
 }

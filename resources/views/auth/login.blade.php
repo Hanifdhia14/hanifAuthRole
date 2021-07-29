@@ -15,7 +15,7 @@
 
   <style media="screen">
 body{
-  background-color: blue;
+  background-image: url('logobaru.jpg');
 }
 	.container-fluid{
 	margin-top: 60px;
@@ -28,7 +28,7 @@ body{
   display: flex;
   }
   .company__info{
-  background-color: skyblue;
+  background-color: rgb(10, 2, 122);
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   display: flex;
