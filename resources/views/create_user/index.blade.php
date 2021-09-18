@@ -54,7 +54,7 @@ table{
 
         <div class="form-group">
           <label for="nama" class="col-form-label">Nama:</label>
-          <input name="nama"  type="text" class="form-control @error('nama')is-invalid @enderror" id="id" placeholder="Masukkan Nama" value="{{old('nama')}}">
+          <input name="nama"  type="text" class="form-control @error('nama')is-invalid @enderror" id="nama" placeholder="Masukkan Nama">
           @error('nama')
             <div class="invalid-feedback">{{$message}}</div>
           @enderror
@@ -62,7 +62,7 @@ table{
 
         <div class="form-group">
           <label for="email" class="col-form-label">Nama Email:</label>
-          <input name="email"  type="text" class="form-control @error('email')is-invalid @enderror" id="email" placeholder="Masukkan email"  value="{{old('email')}}">
+          <input name="email"  type="text" class="form-control @error('email')is-invalid @enderror" id="email" placeholder="Masukkan email">
           @error('email')
             <div class="invalid-feedback">{{$message}}</div>
           @enderror
@@ -70,7 +70,7 @@ table{
 
         <div class="form-group date">
           <label for="role" class="col-form-label">Role:</label>
-          <select name="role" type="text" class="form-control @error('role')is-invalid @enderror" id="role" placeholder="Masukkan Role" value="{{old('role')}}">
+          <select name="role" type="text" class="form-control @error('role')is-invalid @enderror" id="role" placeholder="Masukkan Role">
                <option>-Pilih-</option>
                <option>admin</option>
                <option>user</option>
@@ -83,7 +83,7 @@ table{
 
         <div class="form-group">
           <label for="password" class="col-form-label">Password:</label>
-          <input name="password" type="password" class="form-control @error('password')is-invalid @enderror " id="password" placeholder="Masukkan Password" value="{{old('password')}}">
+          <input name="password" type="password" class="form-control @error('password')is-invalid @enderror " id="password" placeholder="Masukkan Password">
           @error('password')
             <div class="invalid-feedback">{{$message}}</div>
           @enderror
@@ -118,7 +118,7 @@ table{
 
         <div class="modal-body">
           <div class="form-group">
-            <label for="nama" class="col-form-label">Kode Kuadran:</label>
+            <label for="nama" class="col-form-label">Nama User:</label>
             <input name="nama"  type="text" class="form-control" id ="nama" placeholder="Masukkan Kode" value="{{$crt->nama}}">
           </div>
 
@@ -134,7 +134,7 @@ table{
 
           <div class="form-group">
             <label for="password" class="col-form-label">Password:</label>
-            <input name="password" type="text" class="form-control" id="kuadran" placeholder="Masukkan End Date" value="{{$crt->password}}">
+            <input name="password" type="text" class="form-control" id="kuadran" placeholder="Password" value="{{$crt->password}}">
           </div>
 
           <div class="modal-footer">

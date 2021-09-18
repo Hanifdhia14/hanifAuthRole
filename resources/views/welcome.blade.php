@@ -21,7 +21,7 @@
             .min-h-screen{min-height:100vh}
             .overflow-hidden{overflow:hidden}
             .p-6{padding:5.5rem}
-            .py-4{padding-top:40rem;
+            .py-4{padding-top:20rem;
                 padding-bottom:10rem}
             .px-6{padding-left:45rem;
                 padding-right:45rem}
@@ -45,13 +45,7 @@
                 font-family: fantasy;
                 color: white;
             }
-            h1{
-                font-size: 20pt;
-                font-family: "Lucida Console", "Courier New", monospace;
-                padding-top: 140pt;
-                padding-bottom: 40pt;
 
-            }
             #myVideo {
             position: fixed;
             right: 0;

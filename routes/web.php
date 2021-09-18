@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('coba', [\App\Http\Controllers\Coba_Controller::class,'index']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home1', [App\Http\Controllers\HomeController::class, 'index1'])->name('home1');
-Route::get('/home2', [App\Http\Controllers\HomeController::class, 'index2'])->name('home2');
+
+
 Route::get('/testAdminOnly', [App\Http\Controllers\HomeController::class, 'testAdmin']);
 Route::get('/testManagerOnly', [App\Http\Controllers\HomeController::class, 'testManager']);
 
@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth','cekrole:admin']], function () {
 
 
 Route::group(['middleware' => ['auth','cekrole:user']], function () {//user Interface
-
+    Route::get('/home1', [App\Http\Controllers\HomeController::class, 'index1'])->name('home1');
     // target kerja
     Route::get('user.target_kerja.index', [\App\Http\Controllers\Target_kerjaController::class,'index']);
     Route::POST('user.target_kerja.index', [\App\Http\Controllers\Target_kerjaController::class,'store']);
@@ -76,7 +76,7 @@ Route::group(['middleware' => ['auth','cekrole:user']], function () {//user Inte
 Route::group(['middleware' => ['auth','cekrole:leader']], function () {//user Interface
 
     //Leaderterface
-
+    Route::get('/home2', [App\Http\Controllers\HomeController::class, 'index2'])->name('home2');
     // target kerja
     Route::get(
         'leader.target_kerjaleader.index',

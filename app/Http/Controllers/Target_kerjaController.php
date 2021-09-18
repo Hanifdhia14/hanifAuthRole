@@ -10,6 +10,8 @@ use App\Models\Target_kerja;
 
 use App\Models\Kuadran;
 use App\Models\Kpi;
+use App\Models\Employee;
+
 
 class Target_kerjaController extends Controller
 {
@@ -18,7 +20,8 @@ class Target_kerjaController extends Controller
         $set_target= Target_kerja::all();
         $kuadrans= Kuadran::select('kode_kuadran', 'kuadran')->get();
         $kpis= Kpi::select('kode_kpi', 'start_date', 'end_date', 'nama_kpi', 'description', 'polaritas', 'rumus', 'satuan', 'dokumen')->get();
-        return view('user.target_kerja.index', compact('kuadrans', 'kpis', 'set_target'));
+        $Empl= Employee::select('nik_id','nama','divisi','direktorat','alamat','email','no_tlp' )->get();
+        return view('user.target_kerja.index', compact('kuadrans', 'kpis','Empl', 'set_target'));
     }
 
 
@@ -77,7 +80,7 @@ class Target_kerjaController extends Controller
     public function edit(Request $request, Target_kerja $set_target)
     {
         if ($request->isMethod('POST')) {
-            $set = $request->all();
+            $set = $request->all  ();
         }
         Target_kerja::where('id_kerja', $request->id_kerja)
       ->update([

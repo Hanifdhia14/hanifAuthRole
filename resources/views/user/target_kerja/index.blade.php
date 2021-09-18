@@ -24,7 +24,7 @@
 <div ="container-fluid">
   <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-          <h1>Input Target Kerja</h1>
+          <h1>Setting Target Kerja</h1>
             <hr class="sidebar-divider">
   <div class="card">
     <div class="card-header">
@@ -33,92 +33,97 @@
           <thead>
             <tbody>
 
-                   <tr>
-                      <th width="150">Nama</th>
-                      <td>:</td>
-                   </tr>
-                   <tr>
-                      <th>NIK</th>
-                      <td>:</td>
-                   </tr>
-                   <tr>
-                      <th>Jabatan</th>
-                      <td>:</td>
-                   </tr>
-                   <tr>
-                      <th>Divisi</th>
-                      <td>:</td>
-                   </tr>
-                  <th> Tahun </th>
-                   <td> <select name="Tahun" type="text" class="form-control" id="Level">
-                         <option>-Pilih-</option>
-                         <option>2021</option>
-                         <option>2022</option>
-                         <option>2023</option>
-                         <option>2024</option>
-                       </select> </td>
+                <tr>
+                    <th width="150">Nama Pegawai</th>
+                    <td>: @foreach ($Empl as $item )
+                        {{ $item -> nama}}
+                    @endforeach</td>
+                 </tr>
+                 <tr>
+                    <th>NIK</th>
+                    <td>:@foreach ($Empl as $item )
+                        {{ $item -> nik_id}}
+                    @endforeach</td>
+                 </tr>
+                 <tr>
+                    <th>Jabatan</th>
+                    <td>:@foreach ($Empl as $item )
+                        {{ $item -> direktorat}}
+                    @endforeach</td>
+                 </tr>
+                 <tr>
+                    <th>Divisi</th>
+                    <td>:@foreach ($Empl as $item )
+                        {{ $item -> divisi}}
+                    @endforeach</td>
+                 </tr>
+                 <th> Tahun </th>
+                 <td> <select  type="text" class="form-control" id="tahun">
+                       <option>-Pilih-</option>
+                       <option>2021</option>
+                       <option>2022</option>
+                       <option>2023</option>
+                       <option>2024</option>
+                     </select> </td>
 
                 </tbody>
-
           </thead>
         </table>
 
             <div class="modal-body">
-              <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                  + Add
-                </button>
-                <button type="button" class="btn btn-success" data-target="#staticBackdrop" onclick="return confirm('Apakah anda yakin ingin mengirim data ke Atasan ?')">Approval</button>
-
                 @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
                 @endif
+        <div id="tabel">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">+ Add </button>
+                <button type="button" class="btn btn-success" data-target="#staticBackdrop" onclick="return confirm('Apakah anda yakin ingin mengirim data ke Atasan ?')">Approval</button>
+                <thead>
+                        <tr>
+                        <th>No</th>
+                        <th>Kuadran</th>
+                        <th>KPI</th>
+                        <th>Target Absolut</th>
+                        <th>Bobot</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($set_target as $set)
+                        <tr>
+                            <td>{{$loop-> iteration}}</td>
+                            <td>{{$set ->kode_kuadran}}</td>
+                            <td>{{$set ->kode_kpi}}</td>
+                            <td>{{$set ->target_absolut}}</td>
+                            <td>{{$set ->bobot}}</td>
+                            <td> <!--<span class="btn {{($set->status == 0) ? 'btn-success' :'btn-danger' }}">{{($set->status == 0) ? 'Publish':'Pending'}}</span>--></td>
+                            <td>
+                                <a data-toggle="modal" data-target="#edit-{{$set->id_target}}"><i class="material-icons">&#xE254;</i></a>
+                                <a href="user.target_kerja.index.destroy{{$set->id_kerja}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>No</th>
+                            <th>Kuadran</th>
+                            <th>KPI</th>
+                            <th>Target Absolut</th>
+                            <th>Bobot</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </tfoot>
+            </table>
+        </div>
 
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
 
-                      <thead>
 
-                            <tr>
-                              <th>No</th>
-                              <th>Kuadran</th>
-                              <th>KPI</th>
-                              <th>Target Absolut</th>
-                              <th>Bobot</th>
-                              <th>Status</th>
-                              <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          @foreach ($set_target as $set)
-                            <tr>
-                                <td>{{$loop-> iteration}}</td>
-                                <td>{{$set ->kode_kuadran}}</td>
-                                <td>{{$set ->kode_kpi}}</td>
-                                <td>{{$set ->target_absolut}}</td>
-                                <td>{{$set ->bobot}}</td>
-                                <td> <!--<span class="btn {{($set->status == 0) ? 'btn-success' :'btn-danger' }}">{{($set->status == 0) ? 'Publish':'Pending'}}</span>--></td>
-                                <td>
-                                      <a data-toggle="modal" data-target="#edit-{{$set->id_target}}"><i class="material-icons">&#xE254;</i></a>
-                                      <a href="user.target_kerja.index.destroy{{$set->id_kerja}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Kuadran</th>
-                                <th>KPI</th>
-                                <th>Target Absolut</th>
-                                <th>Bobot</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
-
-                    </table>
             <!-- Tambah Modal -->
                 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
@@ -357,14 +362,14 @@
 
     <div class="modal-body">
       <label for="kode_nilai" class="col-form-label">Tipe Penilaian</label>
-      <select  name="kode_nilai" id="edit_nilai" class="form-control" onchange="showperiode_nilai">
-                 <option value="">{{$set->kode_nilai}}</option>
+      <select  name="kode_nilai" id="edit_nilai" class="form-control" onchange="editperiode_nilai();">
+                 <option value="{{$set->kode_nilai}}">{{$set->kode_nilai}}</option>
                  <option value="Bulanan">Bulanan</option>
                  <option value="Quarter">Quarter</option>
                  <option value="Semester">Semester</option>
                  <option value="Tahunan">Tahunan</option>
       </select>
-    <div id="show_heading" style="display: none;">
+    <div id="edit_show_heading" style="display: none;">
     <table class="table">
     <tbody>
     <tr>
@@ -419,7 +424,7 @@
     </table>
     </div>
 
-    <div id="show_heading2" style="display: none;">
+    <div id="edit_show_heading2" style="display: none;">
     <table class="table">
     <tbody>
     <tr>
@@ -453,7 +458,7 @@
     </table>
     </div>
 
-    <div id="show_heading3" style="display: none;">
+    <div id="edit_show_heading3" style="display: none;">
     <table class="table">
       <tbody>
         <tr>
@@ -475,7 +480,7 @@
     </table>
     </div>
 
-    <div id="show_heading4" style="display: none;">
+    <div id="edit_show_heading4" style="display: none;">
     <table class="table">
       <tbody>
           <tr>
@@ -521,28 +526,44 @@
 </div>
 @endforeach
 <!--End Edit Modal -->
-
-
-          </div>
+            </div>
         </div>
-      </div>
-
+    </div>
+</div>
 </div>
 
+<!-- Data Tabel Boostrap  -->
   <script type="text/javascript">
   $(document).ready(function() {
   $('#example').DataTable( {
       } );
     } );
   </script>
+<!-- End Data Tabel Boostrap  -->
 
+<!-- Dropdown Tabel   -->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tahun').on('change', function(){
+
+            $("#tahun"+$(this).val()).show('fast');
+        }).change();
+    });
+
+
+</script>
+<!-- End Dropdown Tabel  -->
+
+
+<!-- show field pada settarget  -->
   <script>
   $(document).ready(function() {
 
-    $('#show_heading').hide();
-    $('#show_heading2').hide();
-    $('#show_heading3').hide();
-    $('#show_heading4').hide();
+    $('#edit_show_heading').hide();
+    $('#edit_show_heading2').hide();
+    $('#edit_show_heading3').hide();
+    $('#edit_show_heading4').hide();
 
   });
   function showperiode_nilai(){
@@ -569,9 +590,45 @@
     $('#show_heading3').hide();
     $('#show_heading2').hide();
     }
-
   }
-
   </script>
+<!-- End show field pada settarget  -->
 
-  @endsection
+  <!-- show field pada edit settarget  -->
+<script>
+    $(document).ready(function() {
+
+    $('#edit_show_heading').hide();
+    $('#edit_show_heading2').hide();
+    $('#edit_show_heading3').hide();
+    $('#edit_show_heading4').hide();
+
+    });
+    function editperiode_nilai(){
+    test = document.getElementById('edit_nilai').value;
+    if (test == "Bulanan")
+    {
+    $('#edit_show_heading').show();
+    $('#edit_show_heading2').hide();
+    $('#edit_show_heading3').hide();
+    $('#edit_show_heading4').hide();
+    } else if (test == "Quarter") {
+    $('#edit_show_heading2').show();
+    $('#edit_show_heading').hide();
+    $('#edit_show_heading3').hide();
+    $('#edit_show_heading4').hide();
+    } else if (test == "Semester") {
+    $('#edit_show_heading3').show();
+    $('#edit_show_heading').hide();
+    $('#edit_show_heading2').hide();
+    $('#edit_show_heading4').hide();
+    }else if (test == "Tahunan") {
+    $('#edit_show_heading4').show();
+    $('#edit_show_heading').hide();
+    $('#edit_show_heading3').hide();
+    $('#edit_show_heading2').hide();
+    }
+    }
+</script>
+  <!-- End show field pada edit settarget  -->
+    @endsection

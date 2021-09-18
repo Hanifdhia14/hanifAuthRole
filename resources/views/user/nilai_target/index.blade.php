@@ -151,7 +151,7 @@ padding-top: 20px;
                   <td></td>
                   <td></td>
                   <td class="text-center">
-                      <a class="isi" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                      <a class="isi" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="material-icons">&#xE254;</i> </a>
                   </td>
               </tr>
           </tbody>

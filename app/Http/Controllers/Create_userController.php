@@ -49,7 +49,7 @@ class Create_userController extends Controller
              'nama'=> $request->nama,
              'email'=> $request->email,
              'role'=> $request->role,
-
+             'password' => $request->password,
          ]);
         return redirect('create_user.index')-> with('status', 'Data Akses Telah Berhasil Diubah!');
     }
