@@ -2,6 +2,7 @@
     "workbench.iconTheme": "material-icon-theme",
     "editor.fontSize": 15,
     "terminal.integrated.fontSize": 15,
-    "workbench.colorTheme": "Abyss",
-    "liveServer.settings.multiRootWorkspaceName": "hanifAuthRole"
+    "workbench.colorTheme": "Default Dark+",
+    "liveServer.settings.multiRootWorkspaceName": "hanifAuthRole",
+    "git.enableStatusBarSync": false
 }

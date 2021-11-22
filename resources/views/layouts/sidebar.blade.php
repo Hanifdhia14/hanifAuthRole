@@ -22,6 +22,7 @@
   </div><br>
   <div class="user-info">
    <span class="user-name" style="color: white; font-family: Verdana; font-weight: bold">{{auth()->user()->nama}}</span><br>
+   <span class="user-name" style="color: white; font-family: Verdana; font-weight: bold">{{auth()->user()->nik_id}}</span><br>
   <span class="user-role" style="color: white; font-family: Verdana;">{{auth()->user()->role}}</span>
 
   </div>
@@ -134,7 +135,7 @@
                   <ul class="treeview-menu">
 
                     <h6>Monitoring Screens:</h6>
-                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> KPI</a></li>
+                    <li><a href="{{url('repotkpi.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> KPI</a></li>
                     <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> Employee</a></li>
 
                   </ul>
@@ -162,8 +163,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <ul class="treeview-menu">
                         <h6 >Custom Utilities:</h6>
-                      <li><a href="{{url('user.target_kerja.index')}}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
-                      <li><a href="{{url('user.nilai_target.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
+                      <li><a href="user.target_kerja.index{{ Auth::id() }}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
+                      <li><a href="user.nilai_target.index{{ Auth::id() }}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
                     </ul>
                 </div>
             </div>

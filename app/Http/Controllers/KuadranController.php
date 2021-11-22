@@ -21,22 +21,7 @@ class KuadranController extends Controller
         return view('kuadran.index', ['kuadran'=>$kuadran]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -56,67 +41,26 @@ class KuadranController extends Controller
         return redirect('kuadran.index')-> with('status', 'Data Kuadran Telah Berhasil Ditambahkan!');
     }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+     function edit (Request $request, $id_kuadran)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request, Kuadran $kuadran)
-    {
-        $request->validate([
-             'kode_kuadran' => 'required',
+        // dd($id_kuadran);
+        $this->validate($request, [
+            'kode_kuadran' => 'required',
              'kuadran' => 'required',
              'start_date' => 'required',
              'end_date' => 'required',
-         ]);
-        if ($request->isMethod('POST')) {
-            $kdr = $request->all();
-        }
-        Kuadran::where('kode_kuadran', $request->kode_kuadran)
-           ->update([
-             'kode_kuadran'=> $request->kode_kuadran,
-             'kuadran'=> $request->kuadran,
-             'start_date'=> $request->start_date,
-             'end_date'=> $request->end_date
-         ]);
-        return redirect('kuadran.index')-> with('status', 'Data Kuadran Telah Berhasil Diubah!');
+        ]);
+
+        DB::table('kuadran1')->where('id_kuadran',$id_kuadran)->update($request->except(['_token']));
+
+        return redirect()->action([\App\Http\Controllers\KuadranController::class,'index'])
+                        ->with('success','Kuadran Updated Successfully');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($kode_kuadran)
+    public function destroy($id_kuadran)
     {
         // menghapus data Kuadran berdasarkan kode_kuadran yang dipilih
-        DB::table('kuadran1')->where('kode_kuadran', $kode_kuadran)->delete();
+        DB::table('kuadran1')->where('id_kuadran',$id_kuadran)->delete();
 
         // alihkan halaman ke halaman kuadran
         return redirect('kuadran.index')-> with('status', 'Data Kuadran Telah Berhasil Dihapuskan!');

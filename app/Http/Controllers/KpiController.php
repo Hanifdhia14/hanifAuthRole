@@ -22,22 +22,7 @@ class KpiController extends Controller
         return view('Kpi.index', ['kpi'=>$kpi]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -66,25 +51,10 @@ class KpiController extends Controller
         return redirect('kpi.index')-> with('status', 'Data KPI Telah Berhasil Ditambahkan!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request)
+    public function edit(Request $request, $id_kpi)
     {
+
         $request->validate([
           'kode_kpi' => 'required',
           'start_date' => 'required',
@@ -96,46 +66,16 @@ class KpiController extends Controller
           'satuan' => 'required',
           'dokumen' => 'required'
       ]);
-        if ($request->isMethod('POST')) {
-            $kpi = $request->all();
-        }
-        Kpi::where('kode_kpi', $request->kode_kpi)
-            ->update([
-              'kode_kpi'=> $request-> kode_kpi,
-              'start_date'=> $request-> start_date,
-              'end_date'=> $request-> end_date,
-              'nama_kpi'=> $request-> nama_kpi,
-              'description' => $request-> description,
-              'polaritas' => $request-> polaritas,
-              'parameter' => $request-> parameter,
-              'satuan'=> $request-> satuan,
-              'dokumen'=> $request-> dokumen,
-          ]);
+
+        DB::table('kpi1')->where('id_kpi',$id_kpi)->update($request->except(['_token']));
         return redirect('kpi.index')-> with('status', 'Data kpi Telah Berhasil Diubah!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($kode_kpi)
+    public function destroy($id_kpi)
     {
         // menghapus data kpi berdasarkan kode_kpi yang dipilih
-        DB::table('kpi1')->where('kode_kpi', $kode_kpi)->delete();
+        DB::table('kpi1')->where('id_kpi',$id_kpi)->delete();
+
 
         // alihkan halaman ke halaman kpi
         return redirect('kpi.index')-> with('status', 'Data KPI Telah Berhasil Dihapuskan!');

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-
-  @section('content')
+@section('content')
   <style media="screen">
 
   h1{
@@ -18,7 +17,7 @@ label{
 }
   </style>
 
-<div class="container-fluid">
+<div ="container-fluid">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
         <h1>Repot Nilai Kerja</h1>
@@ -34,8 +33,7 @@ label{
         <h2>Keterangan:</h2>
         <p>Repot hasil merupakan fasilitas yang dapat digunakan untuk melihat hasil key Performance Indocator pertahun. Selain dapat dilihat secara online, hasil studi ini juga dapat dicetak.</p>
         <form>
-
-          <label for="tahun">Tipe Penilaian :</label>
+          <label for="tahun">Tahun:</label>
             <div class="input-group">
                 <select class="form-control" type="text" class="" name="Tahun">
                   <option value="">== Pilih ==</option>
@@ -44,23 +42,12 @@ label{
                   <option value="">2022</option>
                   <option value="">2023</option>
                 </select>
-                <select class="form-control" type="text" class="" name="Tahun">
-                    <option value="">== Pilih ==</option>
-                    <option value="">Bulanan</option>
-                    <option value="">Quarter</option>
-                    <option value="">Semester</option>
-                    <option value="">Tahun</option>
-                  </select>
                 <div class="input-group-append">
                   <button class="btn btn-primary" type="button">
                     <i class="fas fa-search fa-sm"> Cari</i>
                   </button>
                 </div>
             </div>
-
-
-
-
 
         </form>
 
@@ -84,4 +71,18 @@ $('#example').DataTable( {
 </script>
 
 
-  @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@endsection

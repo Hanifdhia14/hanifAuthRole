@@ -21,10 +21,10 @@ table{
 
   </style>
 
-<div ="container-fluid">
+<div class="container-fluid">
 
     <!-- Content Header (Page header) -->
-        <h1>KPI <small>Imput Data KPI</small></h1>
+        <h1>KPI <small>Input Data KPI</small></h1>
       <hr class="sidebar-divider">
 
         <div class="card-header">
@@ -100,9 +100,13 @@ table{
           </div>
 
           <div class="form-group">
-            <label for="rumus" class="col-form-label">Rumus:</label>
-            <input name="rumus" type="text" class="form-control @error('rumus')is-invalid @enderror" id="rumus" placeholder="Masukkan Rumus" value="{{old('rumus')}}">
-            @error('parameter')
+            <label for="rumus" class="col-form-label">Formula:</label>
+            <select name="rumus" type="text" class="form-control @error('rumus')is-invalid @enderror" id="rumus" placeholder="Masukkan rumus" value="{{old('rumus')}}">
+                <option>-Pilih-</option>
+                <option>Penjumlahan</option>
+                <option>Rata-Rata</option>
+            </select>
+            @error('rumus')
               <div class="invalid-feedback">{{$message}}</div>
             @enderror
           </div>
@@ -110,7 +114,7 @@ table{
           <div class="form-group">
             <label for="satuan" class="col-form-label">Satuan:</label>
               <input name="satuan"type="text" class="form-control @error('satuan')is-invalid @enderror" id="satuan" placeholder="Masukkan Satuan" value="{{old('satuan')}}">
-              @error('description')
+              @error('satuan')
                 <div class="invalid-feedback">{{$message}}</div>
               @enderror
           </div>
@@ -118,7 +122,7 @@ table{
           <div class="form-group">
             <label for="dokumen" class="col-form-label">Dokumen:</label>
               <input name="dokumen"type="text" class="form-control @error('dokumen')is-invalid @enderror" id="dokumen" placeholder="Masukkan Dokumen" value="{{old('dokumen')}}">
-              @error('description')
+              @error('dokumen')
                 <div class="invalid-feedback">{{$message}}</div>
               @enderror
           </div>
@@ -138,7 +142,7 @@ table{
 
 <!-- Content Edit modal -->
 @foreach($kpi as $kp)
-<div class="modal fade" id="edit{{$kp->kode_kpi}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit{{$kp->id_kpi}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
   <div class="modal-header">
@@ -149,7 +153,7 @@ table{
   </div>
 
     <div class="modal-body">
-      <form action="{{action([\App\Http\Controllers\KpiController::class,'edit'])}}" method="POST" id="editform">
+      <form action="kpi.index.edit{{$kp->id_kpi}}" method="POST" id="editform">
         {{csrf_field()}}
 
       <div class="form-group">
@@ -187,13 +191,18 @@ table{
       </div>
 
       <div class="form-group">
-        <label for="rumus" class="col-form-label">Rumus:</label>
-        <input name="parameter" type="text" class="form-control @error('rumus')is-invalid @enderror" id="rumus" placeholder="Masukkan Rumus" value="{{$kp->rumus}}">
+        <label for="rumus" class="col-form-label">Formula:</label>
+        {{-- <input name="rumus" type="text" class="form-control @error('rumus')is-invalid @enderror" id="rumus" placeholder="Masukkan Rumus" value="{{$kp->rumus}}"> --}}
+        <select name="rumus" type="text" class="form-control @error('rumus')is-invalid @enderror" id="rumus" placeholder="Masukkan rumus" value="{{old('rumus')}}">
+            <option>{{$kp->rumus}}</option>
+            <option>Penjumlahan</option>
+            <option>Rata-Rata</option>
+       </select>
       </div>
 
       <div class="form-group">
         <label for="satuan" class="col-form-label">Satuan:</label>
-        <input name="parameter" type="text" class="form-control @error('satuan')is-invalid @enderror" id="satuan" placeholder="Masukkan Satuan" value="{{$kp->satuan}}">
+        <input name="satuan" type="text" class="form-control @error('satuan')is-invalid @enderror" id="satuan" placeholder="Masukkan Satuan" value="{{$kp->satuan}}">
       </div>
 
       <div class="form-group">
@@ -223,7 +232,7 @@ table{
               <th>Nama KPI</th>
               <th>Deskripsi</th>
               <th>Polaritas</th>
-              <th>Rumus</th>
+              <th>Formula</th>
               <th>Satuan</th>
               <th>Dokumen</th>
               <th>Aksi</th>
@@ -244,8 +253,8 @@ table{
           <td>{{$kp ->satuan}}</td>
           <td>{{$kp ->dokumen}}</td>
           <td >
-              <a data-toggle="modal" data-target="#edit{{$kp->kode_kpi}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
-              <a href="kpi.index.destroy{{$kp->kode_kpi }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+              <a data-toggle="modal" data-target="#edit{{$kp->id_kpi}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
+              <a href="kpi.index.destroy{{$kp->id_kpi}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
           </td>
         </tr>
       @endforeach
@@ -260,7 +269,7 @@ table{
             <th>Nama KPI</th>
             <th>Deskripsi</th>
             <th>Polaritas</th>
-            <th>Parameter</th>
+            <th>Formula</th>
             <th>Satuan</th>
             <th>Dokumen</th>
             <th>Aksi</th>

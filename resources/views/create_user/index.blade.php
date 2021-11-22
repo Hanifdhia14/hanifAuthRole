@@ -21,7 +21,7 @@ table{
 
   </style>
 
-<div ="container-fluid">
+<div class="container-fluid">
 
     <!-- Content Header (Page header) -->
         <h1>Akses <small>Create User</small></h1>
@@ -62,23 +62,47 @@ table{
 
         <div class="form-group">
           <label for="email" class="col-form-label">Nama Email:</label>
-          <input name="email"  type="text" class="form-control @error('email')is-invalid @enderror" id="email" placeholder="Masukkan email">
-          @error('email')
-            <div class="invalid-feedback">{{$message}}</div>
-          @enderror
+          <input name="email"  type="text" class="form-control" id="email" placeholder="Masukkan email">
+        </div>
+
+        <div class="form-group">
+            <label for="nik_id" class="col-form-label">NIK Pegawai:</label>
+            <input type="text" name="nik_id" id="nik_id" class="form-control" placeholder="Masukkan NIK">
+        </div>
+
+        <div class="form-group">
+            <label for="divisi" class="col-form-label">Divisi Bagian:</label>
+            <input type="text" name="divisi" id="divisi" class="form-control" placeholder="Masukkan Divisi">
+        </div>
+
+        <div class="form-group">
+            <label for="jabatan" class="col-form-label">jabatan:</label>
+            <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Masukkan Jabatan">
+        </div>
+
+        <div class="form-group">
+            <label for="direktorat" class="col-form-label">Direktorat:</label>
+            <input type="text" name="direktorat" id="direktorat" class="form-control" placeholder="Masukkan Direktorat">
+        </div>
+
+        <div class="form-group">
+            <label for="alamat" class="col-form-label">Alamat:</label>
+            <input name="alamat" id="alamat" cols="30" rows="10" class="form-control" placeholder="Masukkan Alamat">
+        </div>
+
+        <div class="form-group">
+            <label for="no_tlp" class="col-form-label">No_tlp:</label>
+            <input type="text" name="no_tlp" id="no_tlp" class="form-control" placeholder="Masukkan Tlp">
         </div>
 
         <div class="form-group date">
           <label for="role" class="col-form-label">Role:</label>
-          <select name="role" type="text" class="form-control @error('role')is-invalid @enderror" id="role" placeholder="Masukkan Role">
+          <select name="role" type="text" class="form-control" id="role" placeholder="Masukkan Role">
                <option>-Pilih-</option>
                <option>admin</option>
                <option>user</option>
                <option>leader</option>
           </select>
-          @error('role')
-            <div class="invalid-feedback">{{$message}}</div>
-          @enderror
         </div>
 
         <div class="form-group">
@@ -125,6 +149,16 @@ table{
           <div class="form-group">
             <label for="email" class="col-form-label">Email:</label>
             <input name="email"  type="text" class="form-control" id="email" placeholder="Masukkan Kuadran"value="{{$crt->email}}">
+          </div>
+
+          <div class="form-group">
+            <label for="nik_id" class="col-form-label">Nama Pegawai:</label>
+            <select type="text"  name="nik_id" id="nik_id" class="form-control">
+            <option value="">==Ubah Pegawai==</option>
+                @foreach ($nama as $item)
+                <option value="{{$item->nik_id}}">{{$item->nama}}</option>
+                @endforeach
+              </select>
           </div>
 
           <div class="form-group">

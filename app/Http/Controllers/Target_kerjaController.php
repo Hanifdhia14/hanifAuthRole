@@ -1,133 +1,101 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
-
 use App\Models\Target_kerja;
-
+//Tabel Kuadran
 use App\Models\Kuadran;
+//Tabel KPI
 use App\Models\Kpi;
+//Tabel Karyawan
 use App\Models\Employee;
+//Tabel Tipe Penilaian
+use App\Models\Bulanan;
+use App\Models\Semester;
+use App\Models\Quarter;
+use App\Models\Tahunan;
+
 
 
 class Target_kerjaController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $set_target= Target_kerja::all();
-        $kuadrans= Kuadran::select('kode_kuadran', 'kuadran')->get();
-        $kpis= Kpi::select('kode_kpi', 'start_date', 'end_date', 'nama_kpi', 'description', 'polaritas', 'rumus', 'satuan', 'dokumen')->get();
-        $Empl= Employee::select('nik_id','nama','divisi','direktorat','alamat','email','no_tlp' )->get();
-        return view('user.target_kerja.index', compact('kuadrans', 'kpis','Empl', 'set_target'));
+        // $set_target= Target_kerja::all();
+        $set_target = DB:: table( 'tbl_settarget_kerja')
+        ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+        ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+        ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+        ->where('tbl_settarget_kerja.id_employee',$id)
+        ->get();
+
+        $data_pegawai= DB:: table( 'tbl_settarget_kerja')
+        ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+        ->select('employee.nik_id', 'employee.nama', 'employee.jabatan', 'employee.divisi')
+        ->first();
+
+        $kuadrans= Kuadran::select('id_kuadran', 'kuadran')->get();
+        $kpis= Kpi::select('id_kpi','nama_kpi')->get();
+
+        return view('user.target_kerja.index', compact('kuadrans', 'kpis', 'set_target','data_pegawai'));
+
     }
-
-
-
-
-    public function create()
-    {
-    }
-
-
 
 
     public function store(Request $request)
     {
+        $request->validate([
+            'bobot' => 'max:100',
+
+          ]);
         $set_target = new target_kerja;
-        $set_target -> kode_kuadran = $request-> kode_kuadran;
-        $set_target -> kode_kpi = $request-> kode_kpi;
-        $set_target -> kode_satuan = $request-> kode_satuan;
-        $set_target -> kode_dcm = $request-> kode_dcm;
-        $set_target -> kode_nmax = $request-> kode_nmax;
-        $set_target -> kode_nilai = $request-> kode_nilai;
-        $set_target -> bln_januari = $request-> terget_01;
-        $set_target -> bln_februari = $request-> target_02;
-        $set_target -> bln_maret = $request-> target_03;
-        $set_target -> bln_april = $request-> target_04;
-        $set_target -> bln_mei = $request-> target_05;
-        $set_target -> bln_juni = $request-> target_06;
-        $set_target -> bln_juli = $request-> target_07;
-        $set_target -> bln_agustus = $request-> target_08;
-        $set_target -> bln_september = $request-> target_09;
-        $set_target -> bln_oktober = $request-> target_10;
-        $set_target -> bln_november = $request-> target_11;
-        $set_target -> bln_desember = $request-> target_12;
-        $set_target -> qtr1 = $request-> target_q1;
-        $set_target -> tgl_q1 = $request-> tgl_target_q1;
-        $set_target -> qtr2 = $request-> target_q2;
-        $set_target -> tgl_q2 = $request-> tgl_target_q2;
-        $set_target -> qtr3 = $request-> target_q3;
-        $set_target -> tgl_q3 = $request-> tgl_target_q3;
-        $set_target -> qtr4 = $request-> target_q4;
-        $set_target -> tgl_q4 = $request-> tgl_target_q4;
-        $set_target -> semester1 = $request-> target_semester1;
-        $set_target -> tgl_s1 = $request-> tgl_target_semester1;
-        $set_target -> semester2 = $request-> target_semester2;
-        $set_target -> tgl_s2 = $request-> tgl_target_semester2;
-        $set_target -> tahun = $request-> target_tahun_unit;
-        $set_target -> tgl_thn = $request-> tgl_target_tahun_unit;
+        $set_target-> id_employee = $request->id_employee;
+        $set_target-> tahun = $request->tahun;
+        $set_target -> id_kuadran = $request-> id_kuadran;
+        $set_target -> id_kpi = $request-> id_kpi;
+        $set_target -> tipe_nilai = $request-> tipe_nilai;
         $set_target -> target_absolut = $request-> target_absolut;
         $set_target -> bobot = $request-> bobot;
         $set_target -> save();
-        return redirect('user.target_kerja.index')-> with('status', 'Data Setting Target Kerja Berhasil Ditambahkan!');
+        // alihkan halaman ke tbl_settarget_kerja
 
-        // alihkan halaman ke Set_target_user
+     return redirect('user.target_kerja.index')-> with('status', 'Data Setting Target Kerja Berhasil Ditambahkan!');
+
+
     }
 
-    public function edit(Request $request, Target_kerja $set_target)
+
+    public function edit(Request $request, $id_settarget_kerja)
     {
-        if ($request->isMethod('POST')) {
-            $set = $request->all  ();
-        }
-        Target_kerja::where('id_kerja', $request->id_kerja)
+        // dd($request->get('id_kuadran'));
+       $update= DB::table('tbl_settarget_kerja')->where('id_settarget_kerja', $id_settarget_kerja)
       ->update([
-       'kode_kuadran' => $request-> kode_kuadran,
-       'kode_kpi' => $request-> kode_kpi,
-       'kode_satuan' => $request-> kode_satuan,
-       'kode_dcm' => $request-> kode_dcm,
-       'kode_nmax' => $request-> kode_nmax,
-       'kode_nilai' => $request-> kode_nilai,
-       'bln_januari' => $request-> terget_01,
-       'bln_februari' => $request-> target_02,
-       'bln_maret' => $request-> target_03,
-       'bln_april' => $request-> target_04,
-       'bln_mei' => $request-> target_05,
-       'bln_juni' => $request-> target_06,
-       'bln_juli' => $request-> target_07,
-       'bln_agustus' => $request-> target_08,
-       'bln_september' => $request-> target_09,
-       'bln_oktober' => $request-> target_10,
-       'bln_november' => $request-> target_11,
-       'bln_desember' => $request-> target_12,
-       'qtr1' => $request-> target_q1,
-       'tgl_q1' => $request-> tgl_target_q1,
-       'qtr2' => $request-> target_q2,
-       'tgl_q2' => $request-> tgl_target_q2,
-       'qtr3' => $request-> target_q3,
-       'tgl_q3' => $request-> tgl_target_q3,
-       'qtr4' => $request-> target_q4,
-       'tgl_q4' => $request-> tgl_target_q4,
-       'semester1' => $request-> target_semester1,
-       'tgl_s1' => $request-> tgl_target_semester1,
-       'semester2' => $request-> target_semester2,
-       'tgl_s2' => $request-> tgl_target_semester2,
-       'tahun' => $request-> target_tahun_unit,
-       'tgl_thn' => $request-> tgl_target_tahun_unit,
+
+       'tahun' => $request->tahun,
+       'id_kuadran' => $request-> id_kuadran,
+       'id_kpi' => $request-> id_kpi,
+       'tipe_nilai'=>$request-> tipe_nilai,
        'target_absolut' => $request-> target_absolut,
        'bobot' => $request-> bobot,
+       'status'=> 0,
       ]);
+    //    dd($update);
         return redirect('user.target_kerja.index')-> with('status', 'Data Setting Traget Telah Berhasil Diubah!');
     }
 
 
-    public function destroy($id_kerja)
+    public function destroy($id_settarget_kerja)
     {
-        DB::table('set_target_user')->where('id_kerja', $id_kerja)->delete();
+        DB::table('tbl_settarget_kerja')->where('id_settarget_kerja', $id_settarget_kerja)->delete();
         return redirect('user.target_kerja.index')-> with('status', 'Data Setting Traget Telah Berhasil Dihapuskan!');
-
-        // alihkan halaman ke halaman kuadran
     }
+
+
+    public function apply($id)
+    {
+        DB::table('tbl_settarget_kerja')->where('id_employee', $id)->where('status','=','0')->update(['status'=>'1' ]);
+        return redirect('user.target_kerja.index')-> with('status', 'Data Setting Target Kerja Telah Apply!');
+    }
+
 }

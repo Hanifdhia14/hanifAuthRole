@@ -26,7 +26,7 @@ table{
   <div class="content-wrapper">
 
     <!-- Content Header (Page header) -->
-        <h1> Kuadran <small> Imput Kuadran</small> </h1>
+        <h1> Kuadran <small> Input Data Kuadran</small> </h1>
         <hr class="sidebar-divider">
 
     <div class="card-header">
@@ -97,7 +97,7 @@ table{
 
   <!-- Content edit modal -->
     @foreach ($kuadran as $kdr)
-      <div class="modal fade" id="edit-{{$kdr->kode_kuadran}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="edit-{{$kdr->id_kuadran}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -107,7 +107,7 @@ table{
                 </button>
             </div>
 
-            <form action="{{action([\App\Http\Controllers\KuadranController::class,'edit'])}}" method="POST" id="editform">
+            <form action="kuadran.index.edit{{$kdr->id_kuadran}}" method="POST" id="editform">
               {{csrf_field()}}
 
             <div class="modal-body">
@@ -166,8 +166,8 @@ table{
               <td>{{$kdr ->start_date}}</td>
               <td>{{$kdr ->end_date}}</td>
               <td>
-                <a aria-hidden="true" data-toggle="modal" data-target="#edit-{{$kdr->kode_kuadran}}"> <i class="material-icons">&#xE254;</i> </a>
-                <a href="kuadran.index.destroy{{$kdr->kode_kuadran}}" aria-hidden="true" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                <a aria-hidden="true" data-toggle="modal" data-target="#edit-{{$kdr->id_kuadran}}"> <i class="material-icons">&#xE254;</i> </a>
+                <a href="kuadran.index.destroy{{$kdr->id_kuadran}}" aria-hidden="true" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
               </td>
 
             </tr>

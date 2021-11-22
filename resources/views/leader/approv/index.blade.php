@@ -9,69 +9,41 @@
           <h1>Approval <small>KPI Staff</small></h1>
           <hr class="sidebar-divider">
 
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel"> Tambah Keterangan</h5>
 
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-                    <input name="Keterangan" type="text" class="form-control @error('Keterangan')is-invalid @enderror" id="Keterangan" placeholder="Masukkan Keterangan" >
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
 
             <div class="card header">
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Tanggal</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Jabatan</th>
-                    <th scope="col">Note</th>
-                    <th scope="col">Aksi</th>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Jabatan</th>
+                    <th>Divisi</th>
+                    <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
+                    @foreach ( $nama_pegawai as $dt )
                   <tr>
-                    <th scope="row">1</th>
-                    <td> 22-10-2021 </td>
-                    <td> <a href="#"> Dhia Eartha Hanif </a></td>
-                    <td>Staff Kinerja Reward</td>
-                    <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
-                      Noted
-                    </button></td>
-                    <td style=" text-align: center;">
-                      <a type="button" class="btn btn-danger">Not Approval</a>
-                      <a type="button" class="btn btn-success">Approval</a>
+                    <th>{{$loop->iteration}}</th>
+                    <td>{{$dt->nama}}</td>
+                    <td>{{$dt->jabatan}}</td>
+                    <td>{{$dt->divisi}}</td>
+                    <td style="color:white">
+                        <a href="leader.approv.detail{{ $dt->id }}"> Detail</a>
                     </td>
                   </tr>
+                  @endforeach
                 </tbody>
                 <tfoot>
                   <th scope="col">No</th>
-                  <th scope="col">Tanggal</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Jabatan</th>
-                  <th scope="col">Note</th>
+                  <th scope="col">Divisi</th>
                   <th scope="col">Aksi</th>
                 </tfoot>
               </table>
             </div>
-
-
-
-
-
         </div>
         <!-- /.container-fluid -->
 

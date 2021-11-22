@@ -22,15 +22,15 @@
   }
   </style>
 
-<div ="container-fluid">
+<div class="container-fluid">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-        <h1>Employee <small>Imput Employee</small></h1>
+        <h1>Employee <small>Input Data Employee</small></h1>
         <hr class="sidebar-divider">
 
 
           <div class="card-header">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"> Tambah </button>
+            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"> Tambah </button> --}}
 
             @if (session('status'))
                 <div class="alert alert-success">
@@ -270,8 +270,6 @@
                 </tr>
               </tfoot>
             </table>
-
-
 
           </div>
 
