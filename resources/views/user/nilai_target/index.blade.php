@@ -61,18 +61,24 @@ padding-top: 20px;
             <th>Divisi</th>
            <td style="font-weight: bold">: {{ Auth::user()->divisi }}</td>
          </tr>
+         <form>
+        <tr>
             <th> Tahun </th>
              <td class="categoryFilter">
-                <select class="form-control">
-                    <option selected="selected"> Pilih Tahun</option>
+                <select class="form-control" name="tahun" required>
+                    <option value=""> Pilih Tahun</option>
                         <?php
                         for($i=date('Y'); $i>=date('Y')-3; $i-=1){
-                        echo"<option value='$i'> $i </option>";
+                        ?>
+                        <option <?php if(isset($_GET['tahun'])) { echo $i==$_GET['tahun']?"selected":""; } ?> value='<?php echo $i; ?>'><?php echo $i; ?></option>";
+                        <?php
                         }
                         ?>
                  </select>
+                 <button type="submit" class="btn btn-primary" style="">Lihat</button>
             </td>
-
+        </tr>
+    </form>
           </tbody>
 
     </thead>

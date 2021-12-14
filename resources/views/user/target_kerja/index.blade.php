@@ -68,6 +68,7 @@
                 <thead>
                         <tr>
                         <th>No</th>
+                        <th>Tahun</th>
                         <th>Kuadran</th>
                         <th>KPI</th>
                         <th>Tipe Nilai</th>
@@ -81,6 +82,7 @@
                     @foreach ($set_target as $set)
                         <tr>
                             <td>{{$loop->iteration}}</td>
+                            <td>{{$set->tahun}}</td>
                             <td>{{$set->kuadran}}</td>
                             <td>{{$set->nama_kpi}}</td>
                             <td>{{$set->tipe_nilai}}</td>
@@ -114,6 +116,7 @@
                     <tfoot>
                         <tr>
                             <th>No</th>
+                            <th>Tahun</th>
                             <th>Kuadran</th>
                             <th>KPI</th>
                             <th>Tipe Nilai</th>

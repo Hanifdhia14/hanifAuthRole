@@ -13,7 +13,8 @@
 form{
   width: 20%;
 }
-label{
+button{
+margin: 10pt;
 
 }
   </style>
@@ -33,36 +34,73 @@ label{
 
         <h2>Keterangan:</h2>
         <p>Repot hasil merupakan fasilitas yang dapat digunakan untuk melihat hasil key Performance Indocator pertahun. Selain dapat dilihat secara online, hasil studi ini juga dapat dicetak.</p>
-        <form>
-
-          <label for="tahun">Tipe Penilaian :</label>
-            <div class="input-group">
-                <select class="form-control" type="text" class="" name="Tahun">
-                  <option value="">== Pilih ==</option>
-                  <option value="">2020</option>
-                  <option value="">2021</option>
-                  <option value="">2022</option>
-                  <option value="">2023</option>
-                </select>
-                <select class="form-control" type="text" class="" name="Tahun">
-                    <option value="">== Pilih ==</option>
-                    <option value="">Bulanan</option>
-                    <option value="">Quarter</option>
-                    <option value="">Semester</option>
-                    <option value="">Tahun</option>
-                  </select>
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"> Cari</i>
-                  </button>
-                </div>
-            </div>
 
 
+        <table style="justify-content: center" id="laporan">
+            <form class="example" action="" style="margin:auto;max-width:300px">
+            <tr>
+                <td >Tahun</td>
+                <td >:</td>
+                <td class="categoryFilter">
+                    <select class="form-control">
+                        <option selected="selected"> Pilih Tahun</option>
+                            <?php
+                            for($i=date('Y'); $i>=date('Y')-3; $i-=1){
+                            echo"<option value='$i'> $i </option>";
+                            }
+                            ?>
+                     </select>
+                </td>
+                <td>Tipe Nilai</td>
+                <td >:</td>
+                <td><input type="text" placeholder="Tipe Nilai" name="search2"> </td>
+                <td><button type="submit"><i class="fa fa-search"></i></button></td>
+              </tr>
+            </form>
+        </table>
 
+        <button id="button" type="button" class="btn btn-danger"> Create PDF </button>
 
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kuadran</th>
+                    <th>KPI</th>
+                    <th>Formula</th>
+                    <th>Tipe Penilaian</th>
+                    <th>Target Absolut</th>
+                    <th>Bobot</th>
+                    <th>Realisasi % </th>
+                    <th>Nilai Mutlak</th>
+                </tr>
+            </thead>
 
-        </form>
+            <tbody>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>No</th>
+                    <th>Kuadran</th>
+                    <th>KPI</th>
+                    <th>Formula</th>
+                    <th>Tipe Penilaian</th>
+                    <th>Target Absolut</th>
+                    <th>Bobot</th>
+                    <th>Realisasi % </th>
+                    <th>Nilai Mutlak</th>
+                </tr>
+            </tfoot>
+        </table>
 
 
 

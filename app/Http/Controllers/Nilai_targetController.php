@@ -11,13 +11,27 @@ class Nilai_targetController extends Controller
 {
     public function index($id)
     {
-        $nilai_dta= DB:: table( 'tbl_settarget_kerja')
-        ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-        ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-        ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
-        ->where('tbl_settarget_kerja.status', '=', '3')
-        ->where('tbl_settarget_kerja.id_employee',$id)
-        ->get();
+        if(isset($_GET['tahun'])) {
+            $tahun = $_GET['tahun'];
+            // echo $tahun;exit;
+            $nilai_dta= DB:: table( 'tbl_settarget_kerja')
+            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->where('tbl_settarget_kerja.status', '=', '3')
+            ->where('tbl_settarget_kerja.id_employee',$id)
+            ->where('tbl_settarget_kerja.tahun', $tahun)
+            ->get();
+        } else {
+            $nilai_dta= DB:: table( 'tbl_settarget_kerja')
+            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->where('tbl_settarget_kerja.status', '=', '3')
+            ->where('tbl_settarget_kerja.id_employee',$id)
+            ->get();
+        }
+
 
 
         // dd($realbulan);

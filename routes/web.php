@@ -25,8 +25,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/testAdminOnly', [App\Http\Controllers\HomeController::class, 'testAdmin']);
 Route::get('/testManagerOnly', [App\Http\Controllers\HomeController::class, 'testManager']);
 
+
+  //ADMIN INTERFACE
 Route::group(['middleware' => ['auth','cekrole:admin']], function () {
-    //Admin Interface
 
     //Kuadran:
     Route::get('kuadran.index', [\App\Http\Controllers\KuadranController::class,'index']);
@@ -57,7 +58,11 @@ Route::group(['middleware' => ['auth','cekrole:admin']], function () {
 });
 
 
-Route::group(['middleware' => ['auth','cekrole:user']], function () {//user Interface
+
+    //USER INTERFACE
+
+Route::group(['middleware' => ['auth','cekrole:user']], function () {
+
     Route::get('/home1', [App\Http\Controllers\HomeController::class, 'index1'])->name('home1');
     // target kerja
     Route::get('user.target_kerja.index{id}', [\App\Http\Controllers\Target_kerjaController::class,'index']);
@@ -79,10 +84,9 @@ Route::group(['middleware' => ['auth','cekrole:user']], function () {//user Inte
 
 
 
+    //LEADER INTERFACE
 Route::group(['middleware' => ['auth','cekrole:leader']], function () {
-    //user Interface
 
-    //Leaderterface
     Route::get('/home2', [App\Http\Controllers\HomeController::class, 'index2'])->name('home2');
     // target kerja
     Route::get(    'leader.target_kerjaleader.index', [\App\Http\Controllers\Target_kerjaleaderController::class,'index']);
