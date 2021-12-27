@@ -15,20 +15,37 @@ use App\Models\Bulanan;
 use App\Models\Semester;
 use App\Models\Quarter;
 use App\Models\Tahunan;
-
-
+use Illuminate\Support\Facades\Auth;
 
 class Target_kerjaController extends Controller
 {
     public function index($id)
     {
         // $set_target= Target_kerja::all();
-        $set_target = DB:: table( 'tbl_settarget_kerja')
-        ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-        ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-        ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
-        ->where('tbl_settarget_kerja.id_employee',$id)
-        ->get();
+        // $set_target = DB:: table( 'tbl_settarget_kerja')
+        // ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+        // ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+        // ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+        // ->where('tbl_settarget_kerja.id_employee',$id)
+        // ->get();
+        if(isset($_GET['tahun'])) {
+            $tahun = $_GET['tahun'];
+            // echo $tahun;exit;
+            $set_target= DB:: table( 'tbl_settarget_kerja')
+            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->where('tbl_settarget_kerja.id_employee',$id)
+            ->where('tbl_settarget_kerja.tahun', $tahun)
+            ->get();
+        } else {
+            $set_target= DB:: table( 'tbl_settarget_kerja')
+            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->where('tbl_settarget_kerja.id_employee',$id)
+            ->get();
+        }
 
         $data_pegawai= DB:: table( 'tbl_settarget_kerja')
         ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
@@ -59,8 +76,10 @@ class Target_kerjaController extends Controller
         $set_target -> bobot = $request-> bobot;
         $set_target -> save();
         // alihkan halaman ke tbl_settarget_kerja
-
-     return redirect('user.target_kerja.index')-> with('status', 'Data Setting Target Kerja Berhasil Ditambahkan!');
+        //   echo "Tes";
+        $user = Auth()->user();
+        return redirect()->route('user.target_kerja', $user->id)-> with('status', 'Data Setting Target Kerja Berhasil Ditambahkan!');
+    //  return redirect('user.target_kerja.index')-> with('status', 'Data Setting Target Kerja Berhasil Ditambahkan!');
 
 
     }
@@ -81,21 +100,29 @@ class Target_kerjaController extends Controller
        'status'=> 0,
       ]);
     //    dd($update);
-        return redirect('user.target_kerja.index')-> with('status', 'Data Setting Traget Telah Berhasil Diubah!');
+    $user = Auth()->user();
+    return redirect()->route('user.target_kerja', $user->id)-> with('status', 'Data Setting Traget Telah Berhasil Diubah!');
+        // return redirect('user.target_kerja.index')-> with('status', 'Data Setting Traget Telah Berhasil Diubah!');
     }
 
 
     public function destroy($id_settarget_kerja)
     {
+        // echo $id_settarget_kerja;exit;
         DB::table('tbl_settarget_kerja')->where('id_settarget_kerja', $id_settarget_kerja)->delete();
-        return redirect('user.target_kerja.index')-> with('status', 'Data Setting Traget Telah Berhasil Dihapuskan!');
+        $user = Auth()->user();
+        // dd($user);
+        return redirect()->route('user.target_kerja', $user->id)-> with('status', 'Data Setting Target Telah Berhasil Dihapuskan!');
     }
 
 
     public function apply($id)
     {
+        // $user = Auth()->user()/;
+        // dd($id);
         DB::table('tbl_settarget_kerja')->where('id_employee', $id)->where('status','=','0')->update(['status'=>'1' ]);
-        return redirect('user.target_kerja.index')-> with('status', 'Data Setting Target Kerja Telah Apply!');
+        return redirect()->route('user.target_kerja', $id)-> with('status', 'Data Setting Target Kerja Telah Apply!');
+        // return redirect('user.target_kerja.index')-> with('status', 'Data Setting Target Kerja Telah Apply!');
     }
 
 }

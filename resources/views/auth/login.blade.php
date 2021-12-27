@@ -143,7 +143,7 @@ body{
 								<label form="form-check-label" for="exampleCheck1">Lihat Password!</label>
 							</div>
 							<div class="row">
-								<input type="submit" value="Submit" class="btn" href="{{url('/main')}}">
+								<input type="submit" value="Log-In" class="btn" href="{{url('/main')}}">
 							</div>
 						</form>
 					</div>

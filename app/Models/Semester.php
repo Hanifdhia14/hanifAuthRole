@@ -9,4 +9,5 @@ class Semester extends Model
 {
     protected $table = "tbl_semester";
     protected $fillable= ['id_semester','id_settarget_kerja','semester1','semester2','tgl_semester'];
+    public $timestamps = false;
 }

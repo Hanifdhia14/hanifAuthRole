@@ -34,7 +34,7 @@ class Nilai_targetController extends Controller
 
 
 
-        // dd($realbulan);
+        // dd($nilai_dta);
         return view('user.nilai_target.index', compact('nilai_dta'));
     }
 
@@ -102,6 +102,8 @@ class Nilai_targetController extends Controller
                     'desember' => $request->desember, 'id_settarget_kerja' => $id_settarget_kerja],
                 ]);
             }
+            $user = Auth()->user();
+            return redirect()->route('user.nilai_target', $user->id,)-> with('status', 'Data Berhasil Disimpan!');
         }
         if($real->tipe_nilai === 'Quarter'){
             $quarter = DB::table('tbl_quarter')->where('id_settarget_kerja', $id_settarget_kerja)->first();
@@ -124,6 +126,7 @@ class Nilai_targetController extends Controller
                     'id_settarget_kerja' => $id_settarget_kerja],
                 ]);
             }
+
         }
         if($real->tipe_nilai === 'Semester'){
             $semester = DB::table('tbl_semester')->where('id_settarget_kerja', $id_settarget_kerja)->first();
@@ -135,9 +138,10 @@ class Nilai_targetController extends Controller
                 ]);
             } else{
                 DB::table('tbl_semester')->insert([
-                    ['semester1' => $request->semester1, 'semester' => $request->semester2, 'id_settarget_kerja' => $id_settarget_kerja],
+                    ['semester1' => $request->semester1, 'semester2' => $request->semester2, 'id_settarget_kerja' => $id_settarget_kerja],
                 ]);
             }
+
         }
         if($real->tipe_nilai === 'Tahunan'){
             $tahunan = DB::table('tbl_tahunan')->where('id_settarget_kerja', $id_settarget_kerja)->first();
@@ -152,12 +156,23 @@ class Nilai_targetController extends Controller
                     'id_settarget_kerja' => $id_settarget_kerja,
                 ]);
             }
+
         }
-        return redirect()->back()-> with('status', 'Data Berhasil Disimpan!');
+        $user = Auth()->user();
+
+         return redirect()->route('user.nilai_target', $user->id,)-> with('status', 'Data Berhasil Disimpan!');
+        // return redirect()->back()-> with('status', 'Data Berhasil Disimpan!');
     }
 
 
-    public function destroy($id)
+    public function submit($id)
     {
+        $nilai_dta= DB:: table( 'tbl_settarget_kerja')
+            ->get();
+            // echo json_encode($nilai_dta);
+        foreach($nilai_dta as $row) {
+            DB::table('tbl_settarget_kerja')->where('id_settarget_kerja', $row->id_settarget_kerja)->where('status','=','3')->update(['status'=>'4' ]);
+        }
+         return redirect()->route('user.nilai_target', $id)-> with('status', 'Data Nilai Target Kerja Telah Di Submit ke Atasan!');
     }
 }

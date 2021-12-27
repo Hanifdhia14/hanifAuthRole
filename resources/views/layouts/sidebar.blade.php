@@ -9,7 +9,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
           <div class="pull-left image">
-            <img src="logo.PNG" width="100">
+            <img src="{{ asset('logo.png') }}" width="100">
           </div>
         </a>
         <!-- Divider -->
@@ -17,7 +17,7 @@
         <hr class="sidebar-divider my-3">
 <div class="text-center">
   <div class="user-pic">
-   <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+   <img class="img-responsive img-rounded" src="{{ asset('logobaru.jpg') }}"
      alt="User picture" width="50">
   </div><br>
   <div class="user-info">
@@ -163,8 +163,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <ul class="treeview-menu">
                         <h6 >Custom Utilities:</h6>
-                      <li><a href="user.target_kerja.index{{ Auth::id() }}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
-                      <li><a href="user.nilai_target.index{{ Auth::id() }}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
+                      <li><a href="{{ route('user.target_kerja', Auth::id()) }}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
+                      <li><a href="{{ route('user.nilai_target', Auth::id()) }}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
                     </ul>
                 </div>
             </div>
@@ -250,11 +250,11 @@
         @endif
 
         <!-- Nav Item - Tables -->
-        <li class="nav-item">
+        <li class="nav-item" >
             <a class="nav-link" href="{{ url()->route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt "></i>
-                <span>Log Out</span></a>
-                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                <span onclick="return confirm('Apakah anda yakin ingin Log Out ?')">Log Out</span></a>
+                 <form id="logout-form" action="{{ route('logout') }}"  method="POST" class="d-none">
                     @csrf
                 </form>
 

@@ -65,21 +65,23 @@ Route::group(['middleware' => ['auth','cekrole:user']], function () {
 
     Route::get('/home1', [App\Http\Controllers\HomeController::class, 'index1'])->name('home1');
     // target kerja
-    Route::get('user.target_kerja.index{id}', [\App\Http\Controllers\Target_kerjaController::class,'index']);
+    Route::get('user/target_kerja/{id}', [\App\Http\Controllers\Target_kerjaController::class,'index'])->name('user.target_kerja');
     Route::POST('user.target_kerja.index', [\App\Http\Controllers\Target_kerjaController::class,'store']);
     Route::match(['get', 'POST'], 'user.target_kerja.index.edit{id_settarget_kerja}', [\App\Http\Controllers\Target_kerjaController::class,'edit']);
-    Route::get('user.target_kerja.index.destroy{id_settarget_kerja}', [\App\Http\Controllers\Target_kerjaController::class,'destroy']);
+    Route::get('user/target_kerja/destroy/{id_settarget_kerja}', [\App\Http\Controllers\Target_kerjaController::class,'destroy'])->name('user.target_kerja.delete');
 
     //Nilai Target
-    Route::get('user.nilai_target.index{id}', [\App\Http\Controllers\Nilai_targetController::class,'index']);
+    Route::get('user/nilai_target/{id}', [\App\Http\Controllers\Nilai_targetController::class,'index'])->name('user.nilai_target');
     Route::get('user.nilai_target{id}', [\App\Http\Controllers\Nilai_targetController::class,'modal']);
-    Route::POST('user.nilai_target.nilai{id_settarget_kerja}', [\App\Http\Controllers\Nilai_targetController::class,'realisasi'])->name('realisasi');
+    Route::POST('user.nilai_target{id_settarget_kerja}', [\App\Http\Controllers\Nilai_targetController::class,'realisasi'])->name('realisasi');
 
     //Apply
-    Route::match(['get', 'POST'], 'user.target_kerja.index.apply{id}', [\App\Http\Controllers\Target_kerjaController::class,'apply']);
-
+    Route::get( 'user/target_kerja/apply/{id}', [\App\Http\Controllers\Target_kerjaController::class,'apply'])->name('user.target_kerja.apply');
+    Route::POST('user/nilai_target/edit/{id_settarget_kerja}',[\App\Http\Controllers\Nilai_targetController::class,'realisasi'])->name('user.nilai_target.edit');
+    //Submit
+    Route::get( 'user/nilai_target/submit/{id_settarget_kerja}', [\App\Http\Controllers\Nilai_targetController::class,'submit'])->name('user.nilai_target.submit');
     //Report user
-    Route::get('user.repotuser.index', [\App\Http\Controllers\RepotuserController::class,'index']);
+    Route::get('user.repotuser.index', [\App\Http\Controllers\RepotuserController::class,'index'])->name('user.repotuser.index');
 });
 
 
@@ -107,6 +109,7 @@ Route::group(['middleware' => ['auth','cekrole:leader']], function () {
     //Addkomen
     Route::get('leader.approv.detail.komen{id_settarget_kerja}',[\App\Http\Controllers\ApprovController::class,'komen'])->name('komen');;
     Route::get('leader.approv.detail.editkomen{id_settarget_kerja}',[\App\Http\Controllers\ApprovController::class,'editkomen']);
+
     //Report leader
     Route::get('leader.repotleader.index', function () {
         return view('leader.repotleader.index');

@@ -29,27 +29,51 @@
   <div class="card">
     <div class="card-header">
       <div class="col-lg-12">
-        <table class="table table-hover" style="width:100%">
+        <table class="table table-over" style="width:100%">
           <thead>
             <tbody>
 
                 <tr>
                     <th width="150">Nama Pegawai</th>
                     <td style="font-weight: bold">: {{ Auth::user()->nama }}</td>
+                    <td></td>
                  </tr>
                  <tr>
                     <th>NIK</th>
                     <td style="font-weight: bold">: {{ Auth::user()->nik_id }}</td>
+                    <td></td>
                  </tr>
                  <tr>
                     <th>Jabatan</th>
                     <td style="font-weight: bold">: {{ Auth::user()->jabatan }}</td>
+                    <td></td>
                  </tr>
                  <tr>
                     <th>Divisi</th>
                    <td style="font-weight: bold">: {{ Auth::user()->divisi }}</td>
+                   <td></td>
                  </tr>
+                 <form>
+                 <tr>
+                    <th> Tahun </th>
 
+                     <td class="categoryFilter">
+                        <select class="form-control" name="tahun" required>
+                            <option value=""> Pilih Tahun</option>
+                                <?php
+                                for($i=date('Y'); $i>=date('Y')-3; $i-=1){
+                                ?>
+                                <option <?php if(isset($_GET['tahun'])) { echo $i==$_GET['tahun']?"selected":""; } ?> value='<?php echo $i; ?>'><?php echo $i; ?></option>";
+                                <?php
+                                }
+                                ?>
+                         </select>
+                         <td>
+                            <button type="submit" class="btn btn-primary" style="">Lihat</button>
+                         </td>
+                    </td>
+                </tr>
+            </form>
                 </tbody>
           </thead>
         </table>
@@ -64,7 +88,7 @@
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"> + Add </button>
-                <a href="user.target_kerja.index.apply{{Auth::id()}}" onclick="return confirm('Apakah anda yakin ingin mengirim data ?')"class="btn btn-success"> + Apply</a>
+                <a href="{{ route('user.target_kerja.apply',Auth::id()) }}" onclick="return confirm('Apakah anda yakin ingin mengirim data ?')"class="btn btn-success"> + Apply</a>
                 <thead>
                         <tr>
                         <th>No</th>
@@ -100,17 +124,22 @@
                             @elseif ($set->status === 3)
                             {{-- Diterima --}}
                             <td style="text-align: center"> <span class="btn btn-success">Accepted</span></td>
+                            @elseif ($set->status === 4)
+                            {{-- Laporan Diterima --}}
+                            <td style="text-align: center"> <span class="btn btn-success">Accepted</span></td>
                             @endif
 
                             <td>
-                                <a data-toggle="modal" data-target="#edit-{{$set->id_settarget_kerja}}"><i class="material-icons">&#xE254;</i></a>
-                                <a href="user.target_kerja.index.destroy{{$set->id_settarget_kerja}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
-                                @if ($set->status === 2 or $set->status === 3)
+                                @if ($set->status !=3)
                                 <a href="" data-toggle="modal" data-target="#komen"> <i class="material-icons">comment</i></a>
+                                @elseif ($set->status === 2 or $set->status === 3)
+                                <a data-toggle="modal" data-target="#edit-{{$set->id_settarget_kerja}}" ><i class="material-icons">&#xE254;</i></a>
+                                <a href="{{ route('user.target_kerja.delete', $set->id_settarget_kerja) }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
                                 @endif
 
                             </td>
                         </tr>
+
                     @endforeach
                     </tbody>
                     <tfoot>
@@ -149,7 +178,7 @@
 
 
             <!-- Tambah Modal -->
-                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -236,7 +265,7 @@
 
             <!--Edit Modal -->
                 @foreach($set_target as $set)
-                <div class="modal fade" id="edit-{{$set->id_settarget_kerja}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="edit-{{$set->id_settarget_kerja}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -321,11 +350,9 @@
                 </div>
                 @endforeach
                 <!--End Edit Modal -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Data Tabel Boostrap  -->
   <script type="text/javascript">

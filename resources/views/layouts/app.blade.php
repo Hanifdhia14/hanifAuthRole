@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>AKIO</title>
-  <link rel="shortcut icon" href="http://156.67.218.233/superior/assets/images/logobaru2.jpg">
+  <link rel="shortcut icon" href="{{ asset('logo_asdp.png') }}">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
     <!-- Fonts -->
@@ -24,9 +24,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="sbadmin2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('sbadmin2/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
-    <link href="sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('sbadmin2/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
