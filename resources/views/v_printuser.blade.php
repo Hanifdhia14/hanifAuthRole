@@ -40,7 +40,7 @@
 
 </head>
 
-<body>
+<body onload="window.print();">
     <div class="container-fluid">
             <div class="col-md-100">
                 <!-- col-lg-12 start here -->
@@ -110,12 +110,13 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th >Kuadran</th>
-                                                    <th >KPI</th>
-                                                    <th >Description</th>
-                                                    <th >Formula</th>
+                                                    <th>Kuadran</th>
+                                                    <th>KPI</th>
+                                                    <th>Deskripsi</th>
                                                     <th>Satuan</th>
+                                                    <th>Formula</th>
                                                     <th>Tipe Nilai</th>
+                                                    <th>Target Absolut</th>
                                                     <th>Bobot</th>
                                                     <th>Realisasi</th>
                                                     <th>Nilai Mutlak</th>
@@ -123,22 +124,150 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    @php
+                                                    $total = 0;
+                                                    @endphp
+                                                    @foreach ( $nilai_dta as $dta )
+                                                <tr>
+                                                    <td>{{$dta->kuadran}}</td>
+                                                    <td>{{$dta->nama_kpi}}</td>
+                                                    <td>{{$dta->description}}</td>
+                                                    <td>{{$dta->satuan}}</td>
+                                                    <td>{{$dta->rumus}}</td>
+                                                    <td>{{$dta->tipe_nilai}}</td>
+                                                    <td>{{$dta->target_absolut}}</td>
+                                                    <td>{{$dta->bobot}}</td>
+                                                    <td style="font-weight: bold">
+                                                        @if ($dta->tipe_nilai === 'Bulanan' && $dta->rumus === 'Penjumlahan')
+                                                        @php
+                                                        $januari = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('januari');
+                                                        $februari = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('februari');
+                                                        $maret = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('maret');
+                                                        $april = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('april');
+                                                        $mei = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('mei');
+                                                        $juni = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('juni');
+                                                        $juli = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('juli');
+                                                        $agustus = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('agustus');
+                                                        $september = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('september');
+                                                        $oktober = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('oktober');
+                                                        $november = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('november');
+                                                        $desember = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('desember');
+                                                        $realbulan = $januari + $februari + $maret + $april + $mei + $juni + $juli + $agustus + $september + $oktober + $november + $desember;
+                                                        if($realbulan >= 120)
+                                                            {
+                                                                $realbulan = 105;
+                                                            }
+                                                        @endphp
+                                                        {{ $realbulan }}
+                                                        @elseif ($dta->tipe_nilai === 'Bulanan' && $dta->rumus === 'Rata-Rata')
+                                                        @php
+                                                        $januari = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('januari');
+                                                        $februari = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('februari');
+                                                        $maret = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('maret');
+                                                        $april = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('april');
+                                                        $mei = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('mei');
+                                                        $juni = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('juni');
+                                                        $juli = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('juli');
+                                                        $agustus = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('agustus');
+                                                        $september = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('september');
+                                                        $oktober = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('oktober');
+                                                        $november = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('november');
+                                                        $desember = DB::table('tbl_bulanan')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('desember');
+                                                        $realbulan = ($januari + $februari + $maret + $april + $mei + $juni + $juli + $agustus + $september + $oktober + $november + $desember)/12;
+                                                        if($realbulan >= 120)
+                                                            {
+                                                                $realbulan = 105;
+                                                            }
+                                                        @endphp
+                                                        {{ $realbulan }}
+                                                        @elseif ($dta->tipe_nilai === 'Semester' && $dta->rumus === 'Penjumlahan')
+                                                        @php
+                                                        $semester1 = DB::table('tbl_semester')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('semester1');
+                                                        $semester2 = DB::table('tbl_semester')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('semester2');
+                                                        $realbulan = $semester1 + $semester2;
+                                                        if($realbulan >= 120)
+                                                            {
+                                                                $realbulan = 105;
+                                                            }
+                                                        @endphp
+                                                        {{ $realbulan }}
+                                                        @elseif ($dta->tipe_nilai === 'Semester' && $dta->rumus === 'Rata-Rata')
+                                                        @php
+                                                        $semester1 = DB::table('tbl_semester')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('semester1');
+                                                        $semester2 = DB::table('tbl_semester')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('semester2');
+                                                        $realbulan = ($semester1 + $semester2)/2;
+                                                        if($realbulan >= 120)
+                                                            {
+                                                                $realbulan = 105;
+                                                            }
+                                                        @endphp
+                                                        {{ $realbulan }}
+                                                        @elseif ($dta->tipe_nilai === 'Quarter' && $dta->rumus === 'Penjumlahan')
+                                                        @php
+                                                        $quarter1 = DB::table('tbl_quarter')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('quarter1');
+                                                        $quarter2 = DB::table('tbl_quarter')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('quarter2');
+                                                        $quarter3 = DB::table('tbl_quarter')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('quarter3');
+                                                        $quarter4 = DB::table('tbl_quarter')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('quarter4');
+                                                        $realbulan = $quarter1 + $quarter2 + $quarter3 + $quarter4;
+                                                        if($realbulan >= 120)
+                                                            {
+                                                                $realbulan = 105;
+                                                            }
+                                                        @endphp
+                                                        {{ $realbulan }}
+                                                        @elseif ($dta->tipe_nilai === 'Quarter' && $dta->rumus === 'Rata-Rata')
+                                                        @php
+                                                        $quarter1 = DB::table('tbl_quarter')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('quarter1');
+                                                        $quarter2 = DB::table('tbl_quarter')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('quarter2');
+                                                        $quarter3 = DB::table('tbl_quarter')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('quarter3');
+                                                        $quarter4 = DB::table('tbl_quarter')->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('quarter4');
+                                                        $realbulan = ($quarter1 + $quarter2 + $quarter3 + $quarter4)/4;
+                                                        if($realbulan >= 120)
+                                                            {
+                                                                $realbulan = 105;
+                                                            }
+                                                        @endphp
+                                                        {{ $realbulan }}
+                                                        @elseif ($dta->tipe_nilai === 'Tahunan' && $dta->rumus === 'Penjumlahan')
+                                                        @php
+                                                        $realbulan = DB::table('tbl_tahunan')
+                                                        ->where('id_settarget_kerja', $dta->id_settarget_kerja)->sum('nilai_tahun');
+                                                        if($realbulan >= 120)
+                                                            {
+                                                                $realbulan = 105;
+                                                            }
+                                                        @endphp
+                                                        {{ $realbulan }}
+                                                        @elseif ($dta->tipe_nilai === 'Tahunan' && $dta->rumus === 'Rata-Rata')
+                                                        @php
+                                                        $realbulan = DB::table('tbl_tahunan')
+                                                        ->where('id_settarget_kerja', $dta->id_settarget_kerja)->avg('nilai_tahun');
+                                                        if($realbulan >= 120)
+                                                            {
+                                                                $realbulan = 105;
+                                                            }
+                                                        @endphp
+                                                        {{ $realbulan }}
+                                                        @endif
+                                                        %
+                                                    </td>
+                                                    <td>@php
+                                                        $bobot = $dta->bobot;
+                                                        $nilai = $bobot * ($realbulan/100);
+                                                        $total = $total + $nilai;
+                                                    @endphp
+                                                    {{ $nilai }}
+                                                    </td>
+                                                </tr>
+                                                @endforeach
                                                 </tr>
 
                                             </tbody>
                                             <tfoot>
                                                 <tr>
                                                     <th colspan="8" class="text-right">Total Nilai:</th>
-                                                    <th class="text-center"></th>
+                                                    <th class="text-center" style="font-weight: bold">100</th>
+                                                    <th class="text-center"> {{ $total }}</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -201,9 +330,11 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th colspan="18" class="text-right">Total Nilai:</th>
-                                                    <th class="text-center"></th>
-                                                    <th class="text-center"></th>
+                                                   <th colspan="9" class="text-right">Total Nilai:</th>
+                                                    <th class="text-center">@php
+                                                        $total = array_sum($nilai);
+                                                    @endphp
+                                                    {{ $total }}</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -250,8 +381,11 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th colspan="11" class="text-right">Total Nilai:</th>
-                                                    <th class="text-center"></th>
+                                                   <th colspan="9" class="text-right">Total Nilai:</th>
+                                                    <th class="text-center">@php
+                                                        $total = array_sum($nilai);
+                                                    @endphp
+                                                    {{ $total }}</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -297,7 +431,10 @@
                                             <tfoot>
                                                 <tr>
                                                     <th colspan="9" class="text-right">Total Nilai:</th>
-                                                    <th class="text-center"></th>
+                                                    <th class="text-center">@php
+                                                        $total = array_sum($nilai);
+                                                    @endphp
+                                                    {{ $total }}</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -305,8 +442,8 @@
                                 </div> --}}
 
                                  {{-- Laporan Tahun --}}
-{{--
-                                 <div class="invoice-items">
+
+                                 {{-- <div class="invoice-items">
                                     <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
                                         <table class="table table-bordered">
                                             <thead>
@@ -339,18 +476,17 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th colspan="8" class="text-right">Total Nilai:</th>
-                                                    <th class="text-center"></th>
+                                             <th colspan="9" class="text-right">Total Nilai:</th>
+                                                    <th class="text-center">@php
+                                                        $total = array_sum($nilai);
+                                                    @endphp
+                                                    {{ $total }}</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
                                     </div>
                                 </div> --}}
 
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
                                         <br>
                                         <br>
                                         <br>

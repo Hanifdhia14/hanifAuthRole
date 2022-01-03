@@ -76,7 +76,7 @@ table{
         </div>
 
         <div class="form-group">
-            <label for="jabatan" class="col-form-label">jabatan:</label>
+            <label for="jabatan" class="col-form-label">Jabatan:</label>
             <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Masukkan Jabatan">
         </div>
 

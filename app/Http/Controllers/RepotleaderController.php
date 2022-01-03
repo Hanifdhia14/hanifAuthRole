@@ -13,6 +13,6 @@ class RepotleaderController extends Controller
 
     public function laporan ()
     {
-        
+
     }
 }

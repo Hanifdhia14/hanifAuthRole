@@ -15,8 +15,15 @@
     <i class="fas fa-bars"></i>
   </button>
 </div>
+<div style="color: white">
+    <?php
+    $tgl=date('l, d-m-Y');
+    echo $tgl;
+    ?>
+  </div>
+<div style="color: white">
 
-
+</div>
         <!-- Navbar -->
     <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
       <li class="nav-item dropdown no-arrow show">

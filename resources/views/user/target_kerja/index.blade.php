@@ -130,10 +130,15 @@
                             @endif
 
                             <td>
-                                @if ($set->status !=3)
+                                @if ($set->status === 3)
                                 <a href="" data-toggle="modal" data-target="#komen"> <i class="material-icons">comment</i></a>
-                                @elseif ($set->status === 2 or $set->status === 3)
+                                @elseif ($set->status === 0)
                                 <a data-toggle="modal" data-target="#edit-{{$set->id_settarget_kerja}}" ><i class="material-icons">&#xE254;</i></a>
+                                <a href="{{ route('user.target_kerja.delete', $set->id_settarget_kerja) }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                                @elseif ($set->status === 2)
+                                <a data-toggle="modal" data-target="#edit-{{$set->id_settarget_kerja}}" ><i class="material-icons">&#xE254;</i></a>
+                                <a href="{{ route('user.target_kerja.delete', $set->id_settarget_kerja) }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                                @elseif ($set->status === 1)
                                 <a href="{{ route('user.target_kerja.delete', $set->id_settarget_kerja) }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
                                 @endif
 
@@ -347,12 +352,14 @@
                 </form>
                 </div>
                 </div>
-                </div>
+
                 @endforeach
                 <!--End Edit Modal -->
-        </div>
+
+            </div>
     </div>
 </div>
+
 
 <!-- Data Tabel Boostrap  -->
   <script type="text/javascript">

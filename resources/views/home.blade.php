@@ -111,10 +111,11 @@
 
                   <!-- Content Row -->
 
-                  <div class="row">
+
+
 
                       <!-- Area Chart -->
-                      <div class="col-xl-8 col-xl-7">
+                      {{-- <div class="col-xl-8 col-xl-7">
                           <div class="card shadow mb-4">
                               <!-- Card Header - Dropdown -->
                              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" >
@@ -133,17 +134,16 @@
                                   </div>
                               </div>
                             </div>
-                          </div>
+                          </div> --}}
 
                                   <!-- Pie Chart -->
 
-                       </div>
 
-                     </div>
+
               <!-- /.container-fluid -->
             </div>
 
           </div>
           <!-- End of Main Content -->
-
+          <img class="" src="{{ asset('logobaru.jpg') }} "alt="User picture" style="display:block; margin:auto;"  >
 @endsection

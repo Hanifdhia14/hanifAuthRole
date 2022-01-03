@@ -13,10 +13,7 @@
 form{
   width: 20%;
 }
-button{
-margin: 10pt;
 
-}
   </style>
 
 <div class="container-fluid">
@@ -51,15 +48,26 @@ margin: 10pt;
                                 }
                                 ?>
                          </select>
-                         <td>
-                             <button type="submit" class="btn btn-primary" style="">Lihat</button>
-                        </td>
+                    </td>
+                    <td class="categoryFilter">
+                        <select class="form-control" name="tipe_nilai" required>
+                            <option value="">Tipe Nilai</option>
+                                <option <?php if(isset($_GET['tipe_nilai'])) { echo "Bulanan"==$_GET['tipe_nilai']?"selected":""; } ?> value="Bulanan">Bulanan</option>
+                                <option <?php if(isset($_GET['tipe_nilai'])) { echo "Quarter"==$_GET['tipe_nilai']?"selected":""; } ?> value="Quarter">Quarter</option>
+                                <option <?php if(isset($_GET['tipe_nilai'])) { echo "Semester"==$_GET['tipe_nilai']?"selected":""; } ?> value="Semester">Semester</option>
+                                <option <?php if(isset($_GET['tipe_nilai'])) { echo "Tahunan"==$_GET['tipe_nilai']?"selected":""; } ?> value="Tahunan">Tahunan</option>
+                         </select>
+                    </td>
+                    <td>
+                            <button type="submit" class="btn btn-primary" style="">Lihat</button>
                     </td>
                 </tr>
             </form>
         </table>
+<div style="margin-top: 10pt; margin-buttom: 20pt">
+    <a href="v_printuser"><button id="button" type="button" class="btn btn-danger"> Print PDF </button></a>
+</div>
 
-        <button id="button" type="button" class="btn btn-danger"> Create PDF </button>
 
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>

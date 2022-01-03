@@ -186,11 +186,11 @@
           <label for="direktorat" class="col-form-label">Direktorat:</label>
           <select name="direktorat" type="text" class="form-control @error('direktorat')is-invalid @enderror" id="direktorat" placeholder="Masukkan Direktorat">
               <option>{{$empl->direktorat}}</option>
-                <option>Vice President</option>
-                <option>Manager</option>
-                <option>Senior Analis</option>
-                <option>Fungsional</option>
-                <option>Staff</option>
+              <option>Komersial dan Pelayanan</option>
+              <option>Teknik dan Fasilitas</option>
+              <option> Perencanaan dan Pengembangan</option>
+              <option> SDM dan Layanan Korporasi</option>
+              <option>Keuangan, Teknologi Informasi, dan Manajemen Risiko</option>
               </select>
         </div>
 

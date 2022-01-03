@@ -19,6 +19,8 @@ Route::get('/', function () {
 });
 Route::get('coba', [\App\Http\Controllers\Coba_Controller::class,'index']);
 
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -82,6 +84,9 @@ Route::group(['middleware' => ['auth','cekrole:user']], function () {
     Route::get( 'user/nilai_target/submit/{id_settarget_kerja}', [\App\Http\Controllers\Nilai_targetController::class,'submit'])->name('user.nilai_target.submit');
     //Report user
     Route::get('user.repotuser.index', [\App\Http\Controllers\RepotuserController::class,'index'])->name('user.repotuser.index');
+   //Print User
+    Route::get('v_printuser', [\App\Http\Controllers\RepotuserController::class,'print']);
+    Route::get('v_printuserpdf', [\App\Http\Controllers\RepotuserController::class,'printpdf']);
 });
 
 

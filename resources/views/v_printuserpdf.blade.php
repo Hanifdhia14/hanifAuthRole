@@ -105,7 +105,7 @@
 
                                 {{-- Ganerate Seluruh Laporan --}}
 
-                                <div class="invoice-items">
+                                {{-- <div class="invoice-items">
                                     <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
                                         <table class="table table-bordered">
                                             <thead>
@@ -143,7 +143,7 @@
                                             </tfoot>
                                         </table>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                     {{-- Laporan Bulanan  --}}
 
@@ -305,7 +305,7 @@
                                 </div> --}}
 
                                  {{-- Laporan Tahun --}}
-{{--
+
                                  <div class="invoice-items">
                                     <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
                                         <table class="table table-bordered">
@@ -345,12 +345,8 @@
                                             </tfoot>
                                         </table>
                                     </div>
-                                </div> --}}
+                                </div>
 
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
                                         <br>
                                         <br>
                                         <br>
