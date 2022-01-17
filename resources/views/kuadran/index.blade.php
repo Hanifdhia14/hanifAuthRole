@@ -51,7 +51,7 @@ table{
                   </button>
               </div>
 
-              <form method="POST" action="{{action([\App\Http\Controllers\KuadranController::class,'store'])}}">
+              <form method="POST" action="{{action([\App\Http\Controllers\KuadranController::class,'tambah'])}}">
                 <div class="modal-body">
                 {{csrf_field()}}
 
@@ -167,7 +167,7 @@ table{
               <td>{{$kdr ->end_date}}</td>
               <td>
                 <a aria-hidden="true" data-toggle="modal" data-target="#edit-{{$kdr->id_kuadran}}"> <i class="material-icons">&#xE254;</i> </a>
-                <a href="kuadran.index.destroy{{$kdr->id_kuadran}}" aria-hidden="true" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                <a href="kuadran.index.hapus{{$kdr->id_kuadran}}" aria-hidden="true" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
               </td>
 
             </tr>

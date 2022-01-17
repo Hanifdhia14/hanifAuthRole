@@ -17,13 +17,12 @@ class KpiController extends Controller
      */
     public function index()
     {
-        //$kpi11 = DB::table('kpi11')->get();
         $kpi = Kpi::all();
         return view('Kpi.index', ['kpi'=>$kpi]);
     }
 
 
-    public function store(Request $request)
+    public function tambah(Request $request)
     {
         $request->validate([
         'kode_kpi' => 'required',
@@ -67,14 +66,14 @@ class KpiController extends Controller
           'dokumen' => 'required'
       ]);
 
-        DB::table('kpi1')->where('id_kpi',$id_kpi)->update($request->except(['_token']));
+        DB::table('kpi')->where('id_kpi',$id_kpi)->update($request->except(['_token']));
         return redirect('kpi.index')-> with('status', 'Data kpi Telah Berhasil Diubah!');
     }
 
-    public function destroy($id_kpi)
+    public function hapus($id_kpi)
     {
         // menghapus data kpi berdasarkan kode_kpi yang dipilih
-        DB::table('kpi1')->where('id_kpi',$id_kpi)->delete();
+        DB::table('kpi')->where('id_kpi',$id_kpi)->delete();
 
 
         // alihkan halaman ke halaman kpi

@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Data_karyawan extends Model
 {
-    protected $table = "employee";
+    protected $table = "data_karyawan";
     protected $fillable= ['id_employee','nik_id','nama','divisi','direktorat','alamat','email','no_tlp'];
 
     public function employee ()
@@ -15,3 +16,4 @@ class Employee extends Model
 }
 
 }
+

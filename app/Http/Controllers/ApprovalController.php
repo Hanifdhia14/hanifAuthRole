@@ -8,16 +8,15 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Target_kerja;
 use App\Models\User;
 
-
-class ApprovController extends Controller
+class ApprovalController extends Controller
 {
     public function index()
     {
         $data_pegawai = DB::table('tbl_settarget_kerja')
-            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
-            ->select('employee.nama', 'employee.jabatan', 'tbl_settarget_kerja.*', 'kuadran1.kuadran', 'kpi1.nama_kpi')
+            ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('data_karyawan', 'data_karyawan.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->select('data_karyawan.nama', 'data_karyawan.jabatan', 'tbl_settarget_kerja.*', 'kuadran.kuadran', 'kpi.nama_kpi')
             ->get();
 
         $nama_pegawai = User::where('role', '=', 'user')->get();
@@ -28,11 +27,11 @@ class ApprovController extends Controller
     public function detail($id)
     {
         $data_pegawai = DB::table('tbl_settarget_kerja')
-            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
             ->where('tbl_settarget_kerja.id_employee', '=', $id)
             ->where('tbl_settarget_kerja.status', '=', '1')
-            ->select('tbl_settarget_kerja.*', 'kuadran1.kuadran', 'kpi1.nama_kpi')
+            ->select('tbl_settarget_kerja.*', 'kuadran.kuadran', 'kpi.nama_kpi')
             ->get();
         //  dd($data_pegawai);
         $nama_pegawai = User::where('id', '=', $id)->first();

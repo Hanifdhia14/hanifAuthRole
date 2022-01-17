@@ -47,7 +47,7 @@ table{
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="{{action([\App\Http\Controllers\KpiController::class,'store'])}}">
+        <form method="POST" action="{{action([\App\Http\Controllers\KpiController::class,'tambah'])}}">
           <div class="form-group">
           {{csrf_field()}}
             <label for="kode_kpi" class="col-form-label">Kode KPI:</label>
@@ -254,7 +254,7 @@ table{
           <td>{{$kp ->dokumen}}</td>
           <td >
               <a data-toggle="modal" data-target="#edit{{$kp->id_kpi}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
-              <a href="kpi.index.destroy{{$kp->id_kpi}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+              <a href="kpi.index.hapus{{$kp->id_kpi}}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
           </td>
         </tr>
       @endforeach

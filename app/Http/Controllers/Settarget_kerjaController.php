@@ -17,39 +17,32 @@ use App\Models\Quarter;
 use App\Models\Tahunan;
 use Illuminate\Support\Facades\Auth;
 
-class Target_kerjaController extends Controller
+class Settarget_kerjaController extends Controller
 {
     public function index($id)
     {
-        // $set_target= Target_kerja::all();
-        // $set_target = DB:: table( 'tbl_settarget_kerja')
-        // ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-        // ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-        // ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
-        // ->where('tbl_settarget_kerja.id_employee',$id)
-        // ->get();
+
         if(isset($_GET['tahun'])) {
             $tahun = $_GET['tahun'];
-            // echo $tahun;exit;
             $set_target= DB:: table( 'tbl_settarget_kerja')
-            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('data_karyawan', 'data_karyawan.id_employee', '=', 'tbl_settarget_kerja.id_employee')
             ->where('tbl_settarget_kerja.id_employee',$id)
             ->where('tbl_settarget_kerja.tahun', $tahun)
             ->get();
         } else {
             $set_target= DB:: table( 'tbl_settarget_kerja')
-            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('data_karyawan', 'data_karyawan.id_employee', '=', 'tbl_settarget_kerja.id_employee')
             ->where('tbl_settarget_kerja.id_employee',$id)
             ->get();
         }
 
         $data_pegawai= DB:: table( 'tbl_settarget_kerja')
-        ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
-        ->select('employee.nik_id', 'employee.nama', 'employee.jabatan', 'employee.divisi')
+        ->join('data_karyawan', 'data_karyawan.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+        ->select('data_karyawan.nik_id', 'data_karyawan.nama', 'data_karyawan.jabatan', 'data_karyawan.divisi')
         ->first();
 
         $kuadrans= Kuadran::select('id_kuadran', 'kuadran')->get();
@@ -60,7 +53,7 @@ class Target_kerjaController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function tambah(Request $request)
     {
         $request->validate([
             'bobot' => 'max:100',
@@ -106,7 +99,7 @@ class Target_kerjaController extends Controller
     }
 
 
-    public function destroy($id_settarget_kerja)
+    public function hapus($id_settarget_kerja)
     {
         // echo $id_settarget_kerja;exit;
         DB::table('tbl_settarget_kerja')->where('id_settarget_kerja', $id_settarget_kerja)->delete();

@@ -164,7 +164,7 @@
                     <ul class="treeview-menu">
                         <h6 >Custom Utilities:</h6>
                       <li><a href="{{ route('user.target_kerja', Auth::id()) }}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
-                      <li><a href="{{ route('user.nilai_target', Auth::id()) }}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
+                      <li><a href="{{ route('user.nilai_target', Auth::id()) }}" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
                     </ul>
                 </div>
             </div>
@@ -189,7 +189,7 @@
                   <ul class="treeview-menu">
 
                     <h6>Monitoring Screens:</h6>
-                    <li><a href="{{url('user.repotuser.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
+                    <li><a href="{{url('user.repotuser.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Report </a></li>
 
                   </ul>
                 </div>

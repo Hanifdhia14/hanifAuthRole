@@ -134,12 +134,12 @@
                                 <a href="" data-toggle="modal" data-target="#komen"> <i class="material-icons">comment</i></a>
                                 @elseif ($set->status === 0)
                                 <a data-toggle="modal" data-target="#edit-{{$set->id_settarget_kerja}}" ><i class="material-icons">&#xE254;</i></a>
-                                <a href="{{ route('user.target_kerja.delete', $set->id_settarget_kerja) }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                                <a href="{{ route('user.target_kerja.hapus', $set->id_settarget_kerja) }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
                                 @elseif ($set->status === 2)
                                 <a data-toggle="modal" data-target="#edit-{{$set->id_settarget_kerja}}" ><i class="material-icons">&#xE254;</i></a>
-                                <a href="{{ route('user.target_kerja.delete', $set->id_settarget_kerja) }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                                <a href="{{ route('user.target_kerja.hapus', $set->id_settarget_kerja) }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
                                 @elseif ($set->status === 1)
-                                <a href="{{ route('user.target_kerja.delete', $set->id_settarget_kerja) }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                                <a href="{{ route('user.target_kerja.hapus', $set->id_settarget_kerja) }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
                                 @endif
 
                             </td>
@@ -192,7 +192,7 @@
                           <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form method="POST" action="{{action([\App\Http\Controllers\Target_kerjaController::class,'store'])}}">
+                    <form method="POST" action="{{action([\App\Http\Controllers\Settarget_kerjaController::class,'tambah'])}}">
                       <div class="modal-body">
                       {{csrf_field()}}
 

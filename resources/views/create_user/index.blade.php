@@ -48,7 +48,7 @@ table{
           </button>
       </div>
 
-      <form method="POST" action="{{action([\App\Http\Controllers\Create_userController::class,'store'])}}">
+      <form method="POST" action="{{action([\App\Http\Controllers\UserController::class,'tambah'])}}">
         <div class="modal-body">
         {{csrf_field()}}
 
@@ -71,19 +71,54 @@ table{
         </div>
 
         <div class="form-group">
-            <label for="divisi" class="col-form-label">Divisi Bagian:</label>
-            <input type="text" name="divisi" id="divisi" class="form-control" placeholder="Masukkan Divisi">
-        </div>
+            <label for="divisi" class="col-form-label">Divisi:</label>
+            <select name="divisi" type="text" class="form-control @error('divisi')is-invalid @enderror" id="divisi" placeholder="Masukkan Divisi" value="{{old('divisi')}}">
+                    <option>-Pilih-</option>
+                  <option>Pengelolaan SDM</option>
+                  <option>Pengembangan Organisasi & Kepemimpinan</option>
+                  <option>Hukum</option>
+                  <option>SPI</option>
+                  <option>Manajemen Resiko & QA</option>
+                  <option>Komersial</option>
+                  <option>Operasional</option>
+                  <option>Pelayanan</option>
+                </select>
+            @error('divisi')
+              <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+          </div>
 
         <div class="form-group">
             <label for="jabatan" class="col-form-label">Jabatan:</label>
-            <input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Masukkan Jabatan">
-        </div>
+            <select name="jabatan" type="text" class="form-control @error('jabatan')is-invalid @enderror" id="jabatan" placeholder="Masukkan Jabatan" value="{{old('jabatan')}}">
+                    <option>-Pilih-</option>
+                  <option>Vice President</option>
+                  <option>Manager</option>
+                  <option>Senior Analis</option>
+                  <option>Fungsional</option>
+                  <option>Staff</option>
+                </select>
+            @error('jabatan')
+              <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+          </div>
 
-        <div class="form-group">
-            <label for="direktorat" class="col-form-label">Direktorat:</label>
-            <input type="text" name="direktorat" id="direktorat" class="form-control" placeholder="Masukkan Direktorat">
-        </div>
+
+
+         <div class="form-group">
+              <label for="direktorat" class="col-form-label">Direktorat:</label>
+              <select name="direktorat" type="text" class="form-control @error('direktorat')is-invalid @enderror" id="direktorat" placeholder="Masukkan Direktorat" value="{{old('direktorat')}}">
+                  	<option>-Pilih-</option>
+                    <option>Komersial dan Pelayanan</option>
+                    <option>Teknik dan Fasilitas</option>
+                    <option> Perencanaan dan Pengembangan</option>
+                    <option> SDM dan Layanan Korporasi</option>
+                    <option>Keuangan, Teknologi Informasi, dan Manajemen Risiko</option>
+                  </select>
+              @error('direktorat')
+                <div class="invalid-feedback">{{$message}}</div>
+              @enderror
+            </div>
 
         <div class="form-group">
             <label for="alamat" class="col-form-label">Alamat:</label>
@@ -137,7 +172,7 @@ table{
             </button>
         </div>
 
-        <form action="{{action([\App\Http\Controllers\Create_userController::class,'edit'])}}" method="POST" id="editform">
+        <form action="{{action([\App\Http\Controllers\UserController::class,'edit'])}}" method="POST" id="editform">
           {{csrf_field()}}
 
         <div class="modal-body">
@@ -206,7 +241,7 @@ table{
           <td>{{$crt ->password}}</td>
           <td >
               <a data-toggle="modal" data-target="#edit{{$crt->id}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
-              <a href="create_user.index.destroy{{$crt->id }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+              <a href="create_user.index.hapus{{$crt->id }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
           </td>
         </tr>
     @endforeach

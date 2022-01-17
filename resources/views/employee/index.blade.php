@@ -25,7 +25,7 @@
 <div class="container-fluid">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-        <h1>Employee <small>Input Data Employee</small></h1>
+        <h1>Data Karyawan <small></small></h1>
         <hr class="sidebar-divider">
 
 
@@ -51,7 +51,7 @@
         </div>
 
         <div class="modal-body">
-          <form method="POST" action="{{action([\App\Http\Controllers\EmployeeController::class,'store'])}}">
+          <form method="POST" action="{{action([\App\Http\Controllers\Data_karyawanController::class,'tambah'])}}">
             {{csrf_field()}}
 
             <div class="form-group">
@@ -85,13 +85,30 @@
               @enderror
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
               <label for="divisi" class="col-form-label">Divisi:</label>
               <input name="divisi"type="text" class="form-control @error('jabatan')is-invalid @enderror" id="divisi" placeholder="Masukkan Divisi" value="{{old('divisi')}}">
               @error('divisi')
                 <div class="invalid-feedback">{{$message}}</div>
               @enderror
-            </div>
+            </div> --}}
+            <div class="form-group">
+                <label for="divisi" class="col-form-label">Divisi:</label>
+                <select name="divisi" type="text" class="form-control @error('divisi')is-invalid @enderror" id="divisi" placeholder="Masukkan Divisi" value="{{old('divisi')}}">
+                        <option>-Pilih-</option>
+                      <option>Pengelolaan SDM</option>
+                      <option>Pengembangan Organisasi & Kepemimpinan</option>
+                      <option>Hukum</option>
+                      <option>SPI</option>
+                      <option>Manajemen Resiko & QA</option>
+                      <option>Komersial</option>
+                      <option>Operasional</option>
+                      <option>Pelayanan</option>
+                    </select>
+                @error('divisi')
+                  <div class="invalid-feedback">{{$message}}</div>
+                @enderror
+              </div>
 
             <div class="form-group">
               <label for="direktorat" class="col-form-label">Direktorat:</label>
@@ -158,7 +175,7 @@
     </div>
 
     <div class="modal-body">
-      <form method="POST" action="{{action([\App\Http\Controllers\EmployeeController::class,'edit'])}}">
+      <form method="POST" action="{{action([\App\Http\Controllers\Data_karyawanController::class,'edit'])}}">
         {{csrf_field()}}
 
         <div class="form-group">
@@ -181,6 +198,23 @@
                 <option>Staff</option>
               </select>
         </div>
+        <div class="form-group">
+            <label for="divisi" class="col-form-label">Divisi:</label>
+            <select name="divisi" type="text" class="form-control @error('divisi')is-invalid @enderror" id="divisi" placeholder="Masukkan Divisi" value="{{old('divisi')}}">
+                 <option>{{$empl->divisi}}</option>
+                  <option>Pengelolaan SDM</option>
+                  <option>Pengembangan Organisasi & Kepemimpinan</option>
+                  <option>Hukum</option>
+                  <option>SPI</option>
+                  <option>Manajemen Resiko & QA</option>
+                  <option>Komersial</option>
+                  <option>Operasional</option>
+                  <option>Pelayanan</option>
+                </select>
+            @error('divisi')
+              <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+          </div>
 
         <div class="form-group">
           <label for="direktorat" class="col-form-label">Direktorat:</label>
@@ -250,7 +284,7 @@
                   <td >{{$empl->no_tlp}}</td>
                   <td >
                       <a data-toggle="modal" data-target="#editmodal{{$empl->nik_id}}" data-whatever="@getbootstrap"><i class="material-icons">&#xE254;</i></a>
-                      <a href="employee.index.destroy{{$empl->nik_id }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
+                      <a href="employee.index.hapus{{$empl->nik_id }}" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')"><i class="material-icons">&#xE872;</i></a>
                   </td>
                 </tr>
               @endforeach

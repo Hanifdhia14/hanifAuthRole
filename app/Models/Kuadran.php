@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Kuadran extends Model
 {
-    protected $table = 'kuadran1';
+    protected $table = 'kuadran';
     protected $fillable= ['id_kuadran','kode_kuadran', 'kuadran', 'start_date', 'end_date'];
 
     public function Target_kerja ()

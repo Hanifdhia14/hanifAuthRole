@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Data_karyawan;
 use Illuminate\Http\Request;
-
-use App\Models\Employee;
 
 use Illuminate\Support\Facades\DB;
 
-class EmployeeController extends Controller
+class Data_karyawanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee = Employee::all();
+        $employee = Data_karyawan::all();
         return view('employee.index', ['employee'=>$employee]);
     }
 
@@ -37,7 +35,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function tambah(Request $request)
     {
         $request->validate([
             'nik_id' => 'required',
@@ -50,7 +48,7 @@ class EmployeeController extends Controller
             'no_tlp' => 'required',
         ]);
 
-        $employee = new employee;
+        $employee = new Data_karyawan;
         $employee-> nik_id = $request-> nik_id;
         $employee-> nama = $request-> nama;
         $employee-> jabatan = $request-> jabatan;
@@ -97,16 +95,8 @@ class EmployeeController extends Controller
         if ($request->isMethod('POST')) {
             $empl = $request->all();
         }
-        //$employee=DB::table('employee')->where('nik', $request->nik)->update([
-        // 'nik' => $request->nik,
-        //'nama' => $request->nama,
-        //   'level' => $request->level,
-        //  'jabatan' => $request->jabatan,
-        //   'unit_kerja' => $request->unit_kerja,
-        //   'wilayah' => $request->wilayah,
-        // 'email' => $request->email,
-        //]);
-        Employee::where('nik', $request->nik)
+
+        Data_karyawan::where('nik', $request->nik)
          ->update([
            '$nik_id' => $request->nik_id,
            'nama' => $request->nama,
@@ -138,7 +128,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($nik_id)
+    public function hapus($nik_id)
     {  // menghapus data Kuadran berdasarkan id yang dipilih
         DB::table('employee')->where('nik_id', $nik_id)->delete();
 

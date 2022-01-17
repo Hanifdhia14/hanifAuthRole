@@ -22,7 +22,7 @@ class KuadranController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function tambah (Request $request)
     {
         $request->validate([
               'kode_kuadran' => 'required',
@@ -51,16 +51,16 @@ class KuadranController extends Controller
              'end_date' => 'required',
         ]);
 
-        DB::table('kuadran1')->where('id_kuadran',$id_kuadran)->update($request->except(['_token']));
+        DB::table('kuadran')->where('id_kuadran',$id_kuadran)->update($request->except(['_token']));
 
         return redirect()->action([\App\Http\Controllers\KuadranController::class,'index'])
                         ->with('success','Kuadran Updated Successfully');
     }
 
-    public function destroy($id_kuadran)
+    public function hapus ($id_kuadran)
     {
         // menghapus data Kuadran berdasarkan kode_kuadran yang dipilih
-        DB::table('kuadran1')->where('id_kuadran',$id_kuadran)->delete();
+        DB::table('kuadran')->where('id_kuadran',$id_kuadran)->delete();
 
         // alihkan halaman ke halaman kuadran
         return redirect('kuadran.index')-> with('status', 'Data Kuadran Telah Berhasil Dihapuskan!');

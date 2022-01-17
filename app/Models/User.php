@@ -46,6 +46,6 @@ class User extends Authenticatable
 
     public function users ()
     {
-        return $this->hasOne('App\Models\Employee', 'nik_id');
+        return $this->hasOne('App\Models\Data_Karyawan', 'nik_id');
     }
 }

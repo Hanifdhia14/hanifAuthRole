@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Target_kerja;
+
 class Nilai_targetController extends Controller
 {
     public function index($id)
@@ -15,18 +16,18 @@ class Nilai_targetController extends Controller
             $tahun = $_GET['tahun'];
             // echo $tahun;exit;
             $nilai_dta= DB:: table( 'tbl_settarget_kerja')
-            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('data_karyawan', 'data_karyawan.id_employee', '=', 'tbl_settarget_kerja.id_employee')
             ->where('tbl_settarget_kerja.status', '=', '3')
             ->where('tbl_settarget_kerja.id_employee',$id)
             ->where('tbl_settarget_kerja.tahun', $tahun)
             ->get();
         } else {
             $nilai_dta= DB:: table( 'tbl_settarget_kerja')
-            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('data_karyawan', 'data_karyawan.id_employee', '=', 'tbl_settarget_kerja.id_employee')
             ->where('tbl_settarget_kerja.status', '=', '3')
             ->where('tbl_settarget_kerja.id_employee',$id)
             ->get();
@@ -42,8 +43,8 @@ class Nilai_targetController extends Controller
     public function modal ($id)
     {
         $data = DB::table( 'tbl_settarget_kerja')
-        ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-        ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+        ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+        ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
         ->leftJoin('tbl_bulanan', 'tbl_bulanan.id_settarget_kerja', '=', 'tbl_settarget_kerja.id_settarget_kerja')
         ->leftJoin('tbl_quarter', 'tbl_quarter.id_settarget_kerja', '=', 'tbl_settarget_kerja.id_settarget_kerja')
         ->leftJoin('tbl_semester', 'tbl_semester.id_settarget_kerja', '=', 'tbl_settarget_kerja.id_settarget_kerja')
@@ -57,9 +58,9 @@ class Nilai_targetController extends Controller
     public function realisasi (Request $request, $id_settarget_kerja)
     {
         $real= DB:: table( 'tbl_settarget_kerja')
-        ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-        ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-        ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+        ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+        ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+        ->join('data_karyawan', 'data_karyawan.id_employee', '=', 'tbl_settarget_kerja.id_employee')
         ->where('tbl_settarget_kerja.status', '=', '3')
         ->where('tbl_settarget_kerja.id_settarget_kerja',$id_settarget_kerja)
         ->first();

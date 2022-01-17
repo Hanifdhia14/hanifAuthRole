@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
+use App\Models\Data_karyawan;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -10,17 +10,17 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class Create_userController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
         $create_user= User::all();
-        $nama= Employee::select('nama')->get();
+        $nama= Data_karyawan::select('nama')->get();
         return view('create_user.index', compact('create_user', 'nama'));
 
 
     }
-    public function store(Request $request)
+    public function tambah(Request $request)
     {
         //      dd($request->all());
         $request->validate([
@@ -45,7 +45,7 @@ class Create_userController extends Controller
         $create_user-> password = Hash::make($request-> password);
         $saveUser = $create_user->save();
 
-        $newEmployeee = new Employee;
+        $newEmployeee = new Data_karyawan;
         $newEmployeee->nik_id = $request->nik_id;
         $newEmployeee->nama = $request->nama;
         $newEmployeee->jabatan = $request->jabatan;
@@ -88,7 +88,7 @@ class Create_userController extends Controller
         return redirect('create_user.index')-> with('status', 'Data Akses Telah Berhasil Diubah!');
     }
 
-    public function destroy($id)
+    public function hapus($id)
     {
         // menghapus data akses berdasarkan id yang dipilih
         DB::table('users')->where('id', $id)->delete();

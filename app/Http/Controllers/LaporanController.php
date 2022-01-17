@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 
-class RepotuserController extends Controller
+class LaporanController extends Controller
 {
     public function index()
     {
@@ -14,21 +14,21 @@ class RepotuserController extends Controller
             $tipe_nilai = $_GET['tipe_nilai'];
             // echo $tahun;exit;
             $nilai_dta= DB:: table( 'tbl_settarget_kerja')
-            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('data_karyawan', 'data_karyawan.id_employee', '=', 'tbl_settarget_kerja.id_employee')
             ->where('tbl_settarget_kerja.status', '=', '4')
             ->where('tbl_settarget_kerja.tahun', $tahun)
-            ->where('tbl_settarget_kerja.id_employee',auth()->user()->role)
+            ->where('tbl_settarget_kerja.id_employee', auth()->user()->id)
             ->where('tbl_settarget_kerja.tipe_nilai', $tipe_nilai)
             ->get();
         } else {
             $nilai_dta= DB:: table( 'tbl_settarget_kerja')
-            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('data_karyawan', 'data_karyawan.id_employee', '=', 'tbl_settarget_kerja.id_employee')
             ->where('tbl_settarget_kerja.status', '=', '4')
-            ->where('tbl_settarget_kerja.id_employee',auth()->user()->role)
+            ->where('tbl_settarget_kerja.id_employee', auth()->user()->id)
             ->get();
         }
 
@@ -40,11 +40,10 @@ class RepotuserController extends Controller
             // $tipe_nilai = $_GET['tipe_nilai'];
             // echo $tahun;exit;
             $nilai_dta= DB:: table( 'tbl_settarget_kerja')
-            ->join('kuadran1', 'kuadran1.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
-            ->join('kpi1', 'kpi1.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
-            ->join('employee', 'employee.id_employee', '=', 'tbl_settarget_kerja.id_employee')
+            ->join('kuadran', 'kuadran.id_kuadran', '=', 'tbl_settarget_kerja.id_kuadran')
+            ->join('kpi', 'kpi.id_kpi', '=', 'tbl_settarget_kerja.id_kpi')
+            ->join('data_karyawan', 'data_karyawan.id_employee', '=', 'tbl_settarget_kerja.id_employee')
             ->where('tbl_settarget_kerja.status', '=', '4')
-            ->where('tbl_settarget_kerja.id_employee',auth()->user()->role)
             // ->where('tbl_settarget_kerja.tahun', $tahun)
             // ->where('tbl_settarget_kerja.tipe_nilai', $tipe_nilai)
             ->get();
@@ -69,3 +68,4 @@ class RepotuserController extends Controller
         $dompdf->stream();
     }
 }
+
